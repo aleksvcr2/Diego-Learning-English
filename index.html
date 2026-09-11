@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Responde al DOT en inglés sin miedo | The Mendoza Law Firm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --navy:#0F2A4A; --navy-2:#16406F; --green:#158A4A; --green-bg:#E7F6ED;
+  --orange:#F1631B; --orange-2:#D65210; --red:#DC2A2A; --red-bg:#FCE9E9;
+  --ink:#141B22; --paper:#FFFFFF; --mist:#F4F6F8; --line:#E4E8EC;
+}
+html.dark{
+  --paper:#0D1420; --mist:#141C29; --ink:#EAF0F6; --line:#25313F;
+  --green-bg:#0F2A20; --red-bg:#2A1414;
+}
+*{box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--mist);color:var(--ink);margin:0;
+  padding-bottom:76px; -webkit-tap-highlight-color:transparent;}
+h1,h2,h3,.display{font-family:'Fraunces',serif;}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;
+  border-radius:14px;padding:.85rem 1.4rem;font-size:.95rem;transition:transform .15s ease,filter .15s ease;
+  border:none;cursor:pointer;}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--orange);color:#fff;}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn-navy:hover{filter:brightness(1.15)}
+.btn-outline{background:transparent;border:2px solid var(--navy);color:var(--navy);}
+html.dark .btn-outline{color:#EAF0F6;border-color:#3A4B5E}
+.btn-ghost{background:var(--mist);color:var(--ink);}
+.btn-green{background:var(--green);color:#fff;}
+.btn-sm{padding:.5rem .9rem;font-size:.8rem;border-radius:10px;}
+.badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;
+  padding:.28rem .65rem;border-radius:999px;letter-spacing:.01em;}
+.badge-navy{background:#E7EEF6;color:var(--navy)} html.dark .badge-navy{background:#182A3E;color:#9FC1E6}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-orange{background:#FEEBE0;color:var(--orange-2)} html.dark .badge-orange{background:#3A2013;color:#FFA36B}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.input{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;
+  padding:.75rem .9rem;font-size:.95rem;color:var(--ink);outline:none;}
+.input:focus{border-color:var(--navy)}
+.navlink{font-weight:600;font-size:.9rem;color:var(--ink);opacity:.75;padding:.5rem .3rem;border-bottom:2px solid transparent;}
+.navlink.active,.navlink:hover{opacity:1;border-color:var(--orange);color:var(--navy)}
+html.dark .navlink.active,html.dark .navlink:hover{color:#fff}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;background:var(--paper);border-top:1px solid var(--line);
+  display:flex;z-index:40;padding-bottom:env(safe-area-inset-bottom);}
+.bottomnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:.6rem 0 .5rem;
+  font-size:.65rem;font-weight:600;color:#8996A3;background:none;border:none;}
+.bottomnav button.active{color:var(--orange)}
+.mic-btn{width:104px;height:104px;border-radius:999px;background:var(--orange);color:#fff;border:none;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(241,99,27,.35);cursor:pointer;}
+.mic-btn.listening{animation:pulse 1.4s ease-in-out infinite;background:var(--red)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(220,42,42,.45)}70%{box-shadow:0 0 0 26px rgba(220,42,42,0)}100%{box-shadow:0 0 0 0 rgba(220,42,42,0)}}
+.chip{border:1.5px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.82rem;font-weight:600;
+  background:var(--paper);cursor:pointer;color:var(--ink);}
+.chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.toast-wrap{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;display:flex;flex-direction:column;gap:8px;align-items:center}
+.toast{background:var(--navy);color:#fff;padding:.7rem 1.1rem;border-radius:12px;font-size:.85rem;font-weight:600;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);animation:fadein .2s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.scorebar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.scorebar>div{height:100%;background:var(--green)}
+::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+.fade-in{animation:fadein .25s ease}
+@media(min-width:900px){.bottomnav{display:none}body{padding-bottom:0}}
+</style>
+</head>
+<body>
+<div id="toastWrap" class="toast-wrap"></div>
+<div id="topnav"></div>
+<div id="app" class="fade-in"></div>
+<div id="bottomnav"></div>
+
+<script>
+/* ============================= DATOS DE DEMOSTRACIÓN ============================= */
+const LOGO_SRC = "data:image/jpeg;base64,__LOGO_BASE64__";
+
+const MODULES = [
+  {id:'dot', name:'DOT e Inspecciones', color:'navy', icon:'🛑',
+    items:['Saludo inicial','Motivo de la parada',"Driver's license",'Medical Certificate','Registration','Insurance','Permits','Hours of Service','Electronic Logging Device','Pre-trip inspection','Vehicle inspection','Instrucciones del oficial','Violaciones y advertencias']},
+  {id:'scales', name:'Básculas', color:'orange', icon:'⚖️',
+    items:['Peso del tractor y tráiler','Axle weight','Gross vehicle weight','Overweight load','Scale ticket','Permisos de sobrepeso','Instrucciones para estacionarse o regresar']},
+  {id:'mechanic', name:'Mecánica', color:'green', icon:'🔧',
+    items:['Brakes','Tires','Lights','Engine','Transmission','Air pressure','Coolant','Oil leak','Electrical problems','Trailer problems','Reporte de fallas','Solicitud de reparación','Roadside assistance']},
+  {id:'dispatch', name:'Dispatch', color:'navy', icon:'📻',
+    items:['Asignación de carga','Confirmación de ruta','Pickup number','Appointment time','Retrasos','Tráfico','Horas disponibles','Cambio de destino','Detention time','Lumper fee','Proof of Delivery','Emergencias']},
+  {id:'terminal', name:'Terminales y Entregas', color:'orange', icon:'🏭',
+    items:['Check-in','Shipping and receiving','Dock number','Pickup y delivery','Bill of Lading','Load confirmation','Seal number','Carga dañada','Rechazo de mercancía','Firma de documentos']},
+  {id:'emergency', name:'Emergencias', color:'red', icon:'🚨',
+    items:['Accidentes','Averías','Neumático ponchado','Sobrecalentamiento','Problemas con los frenos','Llamada al 911','Comunicación con policía','Intercambio de información','Solicitud de grúa']},
+];
+
+const HONEST_PHRASES = [
+  {en:"I'm not sure. May I verify that information?", es:"No estoy seguro. ¿Puedo verificar esa información?"},
+  {en:"I don't know the answer, officer.", es:"No sé la respuesta, oficial."},
+  {en:"Could you please repeat the question?", es:"¿Podría repetir la pregunta, por favor?"},
+  {en:"Could you speak a little more slowly, please?", es:"¿Podría hablar un poco más despacio, por favor?"},
+  {en:"I'm sorry, I didn't understand.", es:"Disculpe, no entendí."},
+  {en:"Could you please explain what you mean?", es:"¿Podría explicar a qué se refiere?"},
+];
+
+function q(en, es, keywords, tip, error){ return {en, es, keywords, tip, error}; }
+
+const SCENARIOS = [
+  {id:'dot-1', category:'dot', level:'A2-B1', title:'Inspección DOT de Nivel I', character:'Oficial DOT', location:'Carretera interestatal',
+    objective:'Responder con claridad y profesionalismo durante una inspección completa.',
+    opening:"Good morning, driver. Please pull over safely and turn off the engine.",
+    keyVocab:["driver's license","medical certificate","registration","insurance","bill of lading","hours of service","electronic logging device","pre-trip inspection"],
+    questions:[
+      q("Good morning, driver. May I see your driver's license, please?","Buenos días, ¿me muestra su licencia de conducir?",["license","here","officer","yes"],"Yes, officer. Here is my license.","Olvidar decir 'officer' o entregar el documento equivocado."),
+      q("Can I also see your medical certificate?","¿Puede mostrar su certificado médico?",["medical","certificate","here"],"Yes, sir. Here is my medical certificate.","Confundir 'medical certificate' con 'medical insurance'."),
+      q("I need your vehicle registration as well.","Necesito el registro del vehículo.",["registration","here"],"Of course. Here is the registration.","No tener el documento a la mano rápidamente."),
+      q("Do you have proof of insurance?","¿Tiene comprobante de seguro?",["insurance","yes","have"],"Yes, I have it right here.","Decir 'ensurance' en vez de 'insurance'."),
+      q("What are you hauling today, and where is the bill of lading?","¿Qué está transportando hoy y dónde está el Bill of Lading?",["hauling","bill of lading","cargo"],"I'm hauling general freight. Here's the bill of lading.","No saber describir la carga en inglés."),
+      q("Where did you load, and what is your destination?","¿Dónde cargó y cuál es su destino?",["from","to","destination","origin"],"I loaded in Dallas, Texas, and my destination is Atlanta, Georgia.","Confundir origen y destino."),
+      q("How many hours have you driven today?","¿Cuántas horas ha manejado hoy?",["hours","drove","driven"],"I've driven about five hours today.","No saber calcular ni expresar las horas en inglés."),
+      q("Can you show me your Electronic Logging Device?","¿Puede mostrarme su Electronic Logging Device?",["eld","log","here","device"],"Yes, here is my ELD. My logs are current.","No saber cómo mostrar el registro del ELD."),
+      q("Did you complete your pre-trip inspection today?","¿Realizó su inspección previa al viaje hoy?",["yes","pre-trip","inspection","completed"],"Yes, officer, I completed my pre-trip inspection this morning.","Responder 'no' sin explicar el motivo."),
+      q("Have you noticed any mechanical problems with the truck or trailer?","¿Ha notado algún problema mecánico?",["no","problem","brakes","lights"],"No, everything is working properly.","No reportar un problema real por miedo a decir 'no sé'."),
+      q("I'm going to walk around your vehicle now. Please stay here.","Voy a revisar su vehículo. Espere aquí.",["okay","understood","yes"],"Okay, officer, I'll wait right here.","Seguir al oficial sin que se lo pidan."),
+      q("Everything looks good. Here are your documents back. Drive safe.","Todo está en orden. Aquí tiene sus documentos. Maneje con cuidado.",["thank you","have a good day"],"Thank you, officer. Have a good day.","No agradecer o despedirse de forma profesional."),
+    ]},
+  {id:'dot-2', category:'dot', level:'A1-A2', title:'Parada por una luz defectuosa', character:'State Trooper', location:'Carretera nocturna',
+    objective:'Entender el motivo de la parada y responder con calma.',
+    opening:"Good evening. I stopped you because your right brake light is out.",
+    keyVocab:['brake light','taillight','fix','warning','citation'],
+    questions:[
+      q("Do you know your brake light is out?","¿Sabía que su luz de freno estaba fundida?",['no','sorry','didn\'t know'],"No, I didn't know that, officer. Thank you for letting me know.","Discutir en vez de reconocer el problema."),
+      q("License and registration, please.","Licencia y registro, por favor.",['here','license','registration'],"Here you go, officer.","Tardar demasiado en encontrar los documentos."),
+      q("I'll give you a warning today. Please get that light fixed soon.","Le daré una advertencia. Repare esa luz pronto.",['thank you','will fix','understood'],"Thank you, officer. I'll get it fixed today.","No comprometerse a reparar el problema."),
+      q("Do you have a nearby shop where you can get this fixed?","¿Tiene un taller cerca para repararlo?",['yes','shop','nearby'],"Yes, there's a shop about ten miles from here.","No saber dar direcciones o distancias."),
+      q("Drive safely, and get that light checked as soon as possible.","Maneje con cuidado y revise esa luz pronto.",['thank you','will do'],"Thank you very much, officer. Have a good night.","No despedirse adecuadamente."),
+      q("Do you have any other lights or equipment issues I should know about?","¿Tiene algún otro problema de luces o equipo?",['no','not that i know'],"No, not that I know of, officer.","Ocultar información sobre otros problemas."),
+    ]},
+  {id:'dot-3', category:'dot', level:'B1', title:'Revisión del Electronic Logging Device', character:'Oficial DOT', location:'Weigh station',
+    objective:'Explicar y mostrar correctamente el ELD.',
+    opening:"I need to review your Electronic Logging Device. Please show me your current status.",
+    keyVocab:['ELD','duty status','driving time','on-duty','off-duty','malfunction'],
+    questions:[
+      q("Please show me your ELD screen.","Muéstreme la pantalla de su ELD.",['here','screen','eld'],"Here is my ELD, officer.","Bloquear la pantalla del dispositivo por accidente."),
+      q("What is your current duty status?","¿Cuál es su estado actual de servicio?",['driving','on duty','off duty'],"I'm currently on-duty driving.","Confundir 'on-duty' con 'off-duty'."),
+      q("How many driving hours do you have left today?","¿Cuántas horas de manejo le quedan hoy?",['hours','left','remaining'],"I have about three hours of driving time left.","No saber calcular las horas restantes."),
+      q("Has your ELD shown any malfunction codes recently?","¿Su ELD ha mostrado códigos de mal funcionamiento?",['no','malfunction','yes'],"No, it has been working correctly.","No reportar un malfuncionamiento real."),
+      q("Can you show me your logs from yesterday?","¿Puede mostrarme sus registros de ayer?",['yesterday','logs','here'],"Yes, here are yesterday's logs.","No saber navegar el historial del dispositivo."),
+      q("Everything looks compliant. Thank you for your cooperation.","Todo está en orden. Gracias por su cooperación.",['thank you','welcome'],"Thank you, officer.","Olvidar agradecer al finalizar."),
+    ]},
+  {id:'scale-1', category:'scales', level:'A2', title:'Entrada a una weigh station', character:'Inspector de báscula', location:'Weigh station',
+    objective:'Seguir instrucciones y comprender el proceso de pesaje.',
+    opening:"Pull your truck onto the scale and stay in the vehicle.",
+    keyVocab:['scale','axle weight','gross weight','ticket'],
+    questions:[
+      q("Are you carrying any hazardous materials?","¿Transporta materiales peligrosos?",['no','yes','hazardous'],"No, I'm not carrying any hazardous materials.","No conocer el término 'hazardous materials'."),
+      q("Please pull forward slowly onto the scale.","Avance despacio sobre la báscula.",['okay','understood'],"Okay, pulling forward now.","Avanzar demasiado rápido."),
+      q("Your gross vehicle weight looks fine. Here is your scale ticket.","Su peso bruto está bien. Aquí tiene su ticket.",['thank you'],"Thank you very much.","No recoger el ticket antes de avanzar."),
+      q("Do you know your current axle weight distribution?","¿Conoce la distribución del peso por eje?",['not sure','yes','axle'],"I'm not completely sure, but it should be within limits.","No saber explicar el concepto de axle weight."),
+      q("You're clear to go. Have a safe trip.","Puede continuar. Buen viaje.",['thank you','will do'],"Thank you, I will. Have a good day.","No responder y simplemente arrancar."),
+    ]},
+  {id:'scale-2', category:'scales', level:'B1', title:'Camión con sobrepeso', character:'Inspector de báscula', location:'Weigh station',
+    objective:'Entender una violación de peso y las opciones disponibles.',
+    opening:"Your truck is showing overweight on the drive axle. Please pull into the parking area.",
+    keyVocab:['overweight','axle','permit','citation','redistribute'],
+    questions:[
+      q("Do you understand why I asked you to pull over?","¿Entiende por qué le pedí que se detenga?",['yes','overweight','understand'],"Yes, sir. My drive axle is overweight.","No comprender el motivo de la parada."),
+      q("Do you have an overweight permit for this load?","¿Tiene un permiso de sobrepeso para esta carga?",['no','yes','permit'],"No, I don't have one for this load.","Decir que sí sin tener el permiso realmente."),
+      q("You'll need to redistribute the load or get a permit before continuing.","Debe redistribuir la carga u obtener un permiso.",['understood','okay','will do'],"I understand. I'll contact my dispatcher right away.","No mencionar que contactará a dispatch."),
+      q("Can you contact your company now?","¿Puede contactar a su compañía ahora?",['yes','calling'],"Yes, I'm calling my dispatcher now.","Tardar en resolver la comunicación con dispatch."),
+      q("Once it's resolved, come back through the scale.","Cuando se resuelva, regrese a la báscula.",['understood','will do'],"Understood. Thank you for your patience.","No regresar a pesar nuevamente después de resolver."),
+    ]},
+  {id:'mech-1', category:'mechanic', level:'A2-B1', title:'Problema con los frenos', character:'Mecánico', location:'Taller de carretera',
+    objective:'Describir una falla mecánica con claridad.',
+    opening:"Hi, what seems to be the problem with your truck today?",
+    keyVocab:['brakes','grinding noise','pressure','warning light'],
+    questions:[
+      q("What seems to be the problem with your truck today?","¿Cuál parece ser el problema con su camión?",['brakes','problem','noise'],"My brakes are making a grinding noise.","No saber describir el sonido o síntoma."),
+      q("When did you first notice this issue?","¿Cuándo notó el problema por primera vez?",['this morning','yesterday','today'],"I noticed it this morning on the highway.","Confundir el tiempo verbal al describir cuándo ocurrió."),
+      q("Is the brake warning light on?","¿Está encendida la luz de advertencia de frenos?",['yes','no','light'],"Yes, the warning light came on about an hour ago.","No saber identificar las luces del tablero."),
+      q("I'll check the air pressure and the brake pads now.","Revisaré la presión de aire y las pastillas.",['okay','thank you'],"Okay, thank you. How long will it take?","No preguntar por el tiempo estimado."),
+      q("It will take about an hour. Do you want to wait here?","Tomará una hora. ¿Quiere esperar aquí?",['yes','wait','okay'],"Yes, I'll wait here. Thank you.","No decidir claramente si esperará o no."),
+      q("The brake pads were worn out. They're replaced now.","Las pastillas estaban desgastadas. Ya están cambiadas.",['thank you','how much'],"Thank you very much. How much do I owe you?","No preguntar por el costo del servicio."),
+    ]},
+  {id:'mech-2', category:'mechanic', level:'A2', title:'Neumático dañado en carretera', character:'Asistencia en carretera', location:'Hombro de la carretera',
+    objective:'Solicitar asistencia y describir la ubicación.',
+    opening:"Roadside assistance, what's your emergency?",
+    keyVocab:['flat tire','blowout','shoulder','mile marker','tow'],
+    questions:[
+      q("Roadside assistance, what's your emergency?","Asistencia en carretera, ¿cuál es su emergencia?",['flat','tire','blowout'],"I have a flat tire on my trailer.","No saber decir 'flat tire' claramente."),
+      q("What is your exact location?","¿Cuál es su ubicación exacta?",['mile marker','highway','location'],"I'm on Interstate 20, near mile marker 45.","No poder describir mile marker o carretera."),
+      q("Are you in a safe location off the road?","¿Está en un lugar seguro fuera de la vía?",['yes','shoulder','safe'],"Yes, I'm parked on the shoulder with my hazard lights on.","No mencionar las luces de emergencia encendidas."),
+      q("A technician will arrive in about 45 minutes. Can you wait safely?","Un técnico llegará en 45 minutos. ¿Puede esperar seguro?",['yes','will wait'],"Yes, I can wait. Thank you.","No confirmar si puede esperar con seguridad."),
+      q("Do you have a spare tire, or do we need to bring one?","¿Tiene una llanta de repuesto o necesitan traer una?",['no','yes','spare'],"No, I don't have a spare. Please bring one.","No saber si tiene o no repuesto disponible."),
+    ]},
+  {id:'dispatch-1', category:'dispatch', level:'A2-B1', title:'Llamada al dispatcher por retraso', character:'Dispatcher', location:'En ruta',
+    objective:'Explicar un retraso y proponer una solución.',
+    opening:"Dispatch, go ahead.",
+    keyVocab:['delay','traffic','appointment','ETA','detention'],
+    questions:[
+      q("Dispatch, go ahead.","Adelante, dispatch escucha.",['delay','traffic','running late'],"Hi, this is truck 204. I'm running about an hour late.","No identificarse con el número de unidad."),
+      q("What's causing the delay?","¿Qué está causando el retraso?",['traffic','accident','construction'],"There's heavy traffic due to an accident on the highway.","No dar una razón clara del retraso."),
+      q("What's your new ETA to the delivery?","¿Cuál es su nueva hora estimada de llegada?",['eta','arrive','around'],"My new ETA is around 3 PM.","No saber expresar la hora estimada en inglés."),
+      q("I'll call the receiver and update the appointment time.","Llamaré al receptor para actualizar la cita.",['thank you','okay'],"Thank you. Please let me know if anything changes.","No pedir confirmación de la actualización."),
+      q("Do you have enough hours of service to complete the delivery?","¿Tiene suficientes horas de servicio para completar la entrega?",['yes','hours','enough'],"Yes, I still have enough hours today.","No verificar sus horas antes de responder."),
+      q("Okay, keep me posted. Drive safe.","Está bien, mantente informado. Maneja con cuidado.",['will do','thank you'],"Will do. Thanks, dispatch.","No cerrar la llamada de forma profesional."),
+    ]},
+  {id:'terminal-1', category:'terminal', level:'A2', title:'Llegada a una terminal', character:'Personal de terminal', location:'Terminal de carga',
+    objective:'Realizar el check-in correctamente.',
+    opening:"Good morning. Do you have an appointment today?",
+    keyVocab:['check-in','dock number','appointment','seal number'],
+    questions:[
+      q("Good morning. Do you have an appointment today?","Buenos días, ¿tiene cita hoy?",['yes','appointment'],"Yes, I have an appointment at 9 AM.","No traer el número de cita a la mano."),
+      q("What's your pickup number or reference number?","¿Cuál es su número de recolección o referencia?",['pickup number','reference'],"My pickup number is 48213.","No saber leer números en inglés con claridad."),
+      q("Please back into dock number seven.","Por favor retroceda al andén número siete.",['okay','dock seven','understood'],"Okay, backing into dock seven now.","Confundir el número de andén."),
+      q("Here is your seal number for the trailer.","Aquí está el número de sello para el tráiler.",['thank you','seal number'],"Thank you. I'll write that down.","No anotar el número de sello."),
+      q("Please sign here to confirm the load.","Firme aquí para confirmar la carga.",['okay','sure'],"Sure, right here?","No confirmar dónde firmar."),
+    ]},
+  {id:'terminal-2', category:'terminal', level:'B1', title:'Confirmación de pickup', character:'Shipping clerk', location:'Almacén',
+    objective:'Confirmar los detalles de una recolección de carga.',
+    opening:"I have your pickup ready. Let's confirm the details.",
+    keyVocab:['bill of lading','load confirmation','pallets','weight'],
+    questions:[
+      q("Can you confirm the number of pallets?","¿Puede confirmar el número de tarimas?",['pallets','number'],"Yes, it should be twenty-two pallets.","No saber el número exacto de tarimas."),
+      q("What is the total weight of this load?","¿Cuál es el peso total de esta carga?",['weight','pounds','total'],"The total weight is about 38,000 pounds.","No saber expresar pesos en libras."),
+      q("Here is the Bill of Lading. Please review it.","Aquí está el Bill of Lading. Revíselo.",['okay','looks good'],"Okay, this looks correct.","Firmar sin revisar el documento."),
+      q("Everything matches. Please sign here.","Todo coincide. Firme aquí, por favor.",['sure','okay'],"Sure, right here.","No confirmar el lugar exacto para firmar."),
+      q("Drive safely to your delivery location.","Maneje con cuidado a su destino.",['thank you','will do'],"Thank you, I will.","No agradecer al finalizar."),
+    ]},
+  {id:'terminal-3', category:'terminal', level:'B1-B2', title:'Entrega con mercancía dañada', character:'Receiving clerk', location:'Centro de distribución',
+    objective:'Reportar y documentar mercancía dañada.',
+    opening:"We found some damage on a few boxes. Can you take a look?",
+    keyVocab:['damaged','claim','photos','refuse','notate'],
+    questions:[
+      q("We found some damage on a few boxes. Can you take a look?","Encontramos daño en algunas cajas. ¿Puede revisar?",['yes','sure','okay'],"Sure, let me take a look.","No revisar la carga con el receptor."),
+      q("How many boxes are damaged?","¿Cuántas cajas están dañadas?",['boxes','number'],"It looks like about five boxes are damaged.","No dar un número claro."),
+      q("Can I get you to take some photos for the claim?","¿Puede tomar fotos para el reclamo?",['yes','sure','photos'],"Yes, I'll take photos right now.","No documentar la evidencia con fotos."),
+      q("I need to notate this on the delivery receipt.","Necesito anotar esto en el recibo de entrega.",['okay','understood'],"Okay, please note the damaged boxes.","No pedir que se anote la incidencia."),
+      q("Do you want to accept the rest of the load or refuse it?","¿Acepta el resto de la carga o la rechaza?",['accept','refuse'],"I'll accept the rest, but please note the damaged boxes clearly.","No decidir claramente sobre aceptar o rechazar."),
+    ]},
+  {id:'emg-1', category:'emergency', level:'B1', title:'Accidente menor', character:'Oficial de policía', location:'Escena del accidente',
+    objective:'Intercambiar información y comunicarse tras un accidente menor.',
+    opening:"Is everyone okay? Please stay calm and turn on your hazard lights.",
+    keyVocab:['accident','insurance','exchange information','police report'],
+    questions:[
+      q("Is everyone okay? Is anyone injured?","¿Todos están bien? ¿Alguien está herido?",['no','okay','fine'],"No, everyone is okay. No injuries.","No confirmar el estado de las personas involucradas."),
+      q("Can I see your license, registration, and insurance?","¿Puedo ver su licencia, registro y seguro?",['here','license','insurance'],"Yes, here they are.","Tardar en entregar los documentos."),
+      q("Can you tell me what happened?","¿Puede contarme qué pasó?",['happened','hit','stopped'],"The other car stopped suddenly and I couldn't avoid the collision.","No poder narrar el evento en inglés."),
+      q("I need to exchange information with the other driver.","Necesito intercambiar información con el otro conductor.",['okay','sure'],"Okay, let's exchange information now.","No saber pedir el intercambio de información."),
+      q("I'll file a police report. Here's a copy for your records.","Presentaré un reporte policial. Aquí tiene una copia.",['thank you'],"Thank you, officer.","No solicitar una copia del reporte."),
+    ]},
+  {id:'emg-2', category:'emergency', level:'A2', title:'Averías y sobrecalentamiento', character:'Asistencia en carretera', location:'Hombro de la carretera',
+    objective:'Reportar una avería mecánica de emergencia.',
+    opening:"Roadside assistance, what's going on with your truck?",
+    keyVocab:['overheating','coolant','engine','tow truck'],
+    questions:[
+      q("What's going on with your truck?","¿Qué está pasando con su camión?",['overheating','engine','smoke'],"My engine is overheating and there's steam coming from the hood.","No saber describir el sobrecalentamiento."),
+      q("Have you checked the coolant level?","¿Ha revisado el nivel de refrigerante?",['no','yes','coolant'],"No, I haven't checked it yet. It's too hot to open.","No entender que no debe abrir el radiador caliente."),
+      q("Don't open the radiator cap while it's hot. Are you in a safe spot?","No abra la tapa mientras esté caliente. ¿Está en un lugar seguro?",['yes','safe','shoulder'],"Yes, I'm safely on the shoulder with my flashers on.","Intentar abrir el radiador de inmediato."),
+      q("I'm sending a technician to check the cooling system.","Enviaré un técnico a revisar el sistema de enfriamiento.",['thank you','okay'],"Thank you. How long will it take?","No preguntar el tiempo de llegada."),
+      q("About 40 minutes. Stay safe until they arrive.","Unos 40 minutos. Manténgase seguro hasta que lleguen.",['okay','will do'],"Okay, I'll wait here safely.","No confirmar que esperará de forma segura."),
+    ]},
+  {id:'dot-4', category:'dot', level:'A1', title:'Inspección de documentos', character:'Oficial DOT', location:'Puesto de control',
+    objective:'Presentar documentación básica correctamente.',
+    opening:"License, registration, and logbook, please.",
+    keyVocab:['logbook','permits','documents','current'],
+    questions:[
+      q("License, registration, and logbook, please.","Licencia, registro y bitácora, por favor.",['here','license'],"Here you are, officer.","Entregar documentos vencidos sin darse cuenta."),
+      q("Are all your permits current?","¿Todos sus permisos están vigentes?",['yes','current','permits'],"Yes, all my permits are current.","No saber si un permiso está vencido."),
+      q("Is this logbook up to date?","¿Esta bitácora está actualizada?",['yes','updated'],"Yes, it's updated through this morning.","No mantener la bitácora al día."),
+      q("Everything looks in order. Thank you.","Todo está en orden. Gracias.",['thank you','have a good day'],"Thank you, officer. Have a good day.","No responder con cortesía profesional."),
+    ]},
+  {id:'dot-5', category:'dot', level:'B1-B2', title:'Instrucción del oficial no comprendida', character:'Oficial DOT', location:'Carretera',
+    objective:'Practicar frases honestas cuando no se entiende una instrucción.',
+    opening:"Step out of the vehicle and stand by the guardrail while I complete the inspection.",
+    keyVocab:['repeat','slowly','understand','guardrail'],
+    questions:[
+      q("Step out of the vehicle and stand by the guardrail while I complete the inspection.","Baje del vehículo y espere junto al pretil.",["i'm sorry","understood","could you repeat"],"I'm sorry, could you repeat that more slowly, please?","Fingir haber entendido cuando no fue así."),
+      q("I said: please stand over there, by the guardrail.","Le dije: por favor espere allá, junto al pretil.",['understood','okay','thank you'],"Thank you, now I understand. I'll wait there.","Seguir sin comprender y quedarse inmóvil."),
+      q("Do you understand what I need you to do next?","¿Entiende lo que necesito que haga ahora?",['yes','not sure','could you explain'],"I'm not completely sure. Could you please explain what you mean?","No pedir aclaración cuando hay duda."),
+      q("I need your logbook and I'll be back in ten minutes.","Necesito su bitácora y regresaré en diez minutos.",['okay','understood'],"Okay, I understand. I'll wait here.","No confirmar haber entendido el plazo."),
+    ]},
+];
+
+const VOCAB = [
+ {en:"Driver's license", es:"Licencia de conducir", cat:'dot', def:'Documento oficial que autoriza a manejar un vehículo comercial.', pron:'DRAI-vers LAI-sens', ex:"Here is my driver's license, officer."},
+ {en:'Medical Certificate', es:'Certificado médico', cat:'dot', def:'Documento que confirma que el conductor está en condiciones físicas para manejar.', pron:'MED-i-kal ser-TIF-i-ket', ex:'My medical certificate is valid until next year.'},
+ {en:'Bill of Lading', es:'Carta de porte', cat:'carga', def:'Documento que describe la carga transportada y las condiciones del envío.', pron:'bil of LEI-ding', ex:'Here is the Bill of Lading for this load.'},
+ {en:'Hours of Service', es:'Horas de servicio', cat:'dot', def:'Reglas federales que limitan el tiempo que un conductor puede manejar.', pron:'AU-ers of SER-vis', ex:"I still have enough Hours of Service to finish the trip."},
+ {en:'Electronic Logging Device', es:'Dispositivo electrónico de registro (ELD)', cat:'dot', def:'Aparato que registra automáticamente las horas de conducción.', pron:'i-lek-TRAH-nik LOG-ing di-VAIS', ex:'My Electronic Logging Device shows I am on-duty.'},
+ {en:'Pre-trip inspection', es:'Inspección previa al viaje', cat:'dot', def:'Revisión del vehículo antes de comenzar a manejar.', pron:'pri-trip in-SPEK-shon', ex:'I completed my pre-trip inspection this morning.'},
+ {en:'Weigh station', es:'Estación de pesaje / báscula', cat:'basculas', def:'Lugar donde se pesa el camión para verificar el cumplimiento del peso permitido.', pron:'wei STEI-shon', ex:'The truck ahead is entering the weigh station.'},
+ {en:'Axle weight', es:'Peso por eje', cat:'basculas', def:'El peso que soporta cada eje del camión o tráiler.', pron:'AK-sel weit', ex:'The axle weight is within the legal limit.'},
+ {en:'Gross vehicle weight', es:'Peso bruto vehicular', cat:'basculas', def:'El peso total del vehículo, incluyendo carga, combustible y conductor.', pron:'gros VI-i-kel weit', ex:'The gross vehicle weight cannot exceed 80,000 pounds.'},
+ {en:'Overweight load', es:'Carga con sobrepeso', cat:'basculas', def:'Una carga que excede el límite de peso permitido por ley.', pron:'O-ver-weit lod', ex:'You have an overweight load on the drive axle.'},
+ {en:'Scale ticket', es:'Ticket de báscula', cat:'basculas', def:'Comprobante impreso con el peso registrado del vehículo.', pron:'skeil TI-ket', ex:'Please keep your scale ticket for your records.'},
+ {en:'Brakes', es:'Frenos', cat:'mecanica', def:'Sistema que permite detener el vehículo.', pron:'breiks', ex:'My brakes are making a strange noise.'},
+ {en:'Air pressure', es:'Presión de aire', cat:'mecanica', def:'Nivel de presión del sistema neumático del camión.', pron:'er PRE-sher', ex:'The air pressure is dropping quickly.'},
+ {en:'Coolant', es:'Refrigerante', cat:'mecanica', def:'Líquido que evita que el motor se sobrecaliente.', pron:'KUL-ant', ex:'I need to check the coolant level.'},
+ {en:'Oil leak', es:'Fuga de aceite', cat:'mecanica', def:'Pérdida de aceite del motor por una falla o daño.', pron:'oil lik', ex:'There is an oil leak under the engine.'},
+ {en:'Roadside assistance', es:'Asistencia en carretera', cat:'mecanica', def:'Servicio de ayuda mecánica de emergencia en la carretera.', pron:'ROD-said a-SIS-tans', ex:'I need to call roadside assistance for a flat tire.'},
+ {en:'Flat tire', es:'Llanta ponchada', cat:'mecanica', def:'Neumático desinflado o dañado.', pron:'flat TAI-er', ex:'I have a flat tire on the trailer.'},
+ {en:'Dispatcher', es:'Despachador', cat:'dispatch', def:'Persona que coordina las cargas y rutas de los conductores.', pron:'dis-PACH-er', ex:'I need to call my dispatcher about the delay.'},
+ {en:'Pickup number', es:'Número de recolección', cat:'dispatch', def:'Código de referencia asignado a una recolección de carga.', pron:'PIK-ap NAM-ber', ex:'My pickup number is 48213.'},
+ {en:'Appointment time', es:'Hora de cita', cat:'dispatch', def:'Hora programada para cargar o entregar mercancía.', pron:'a-POINT-ment taim', ex:'My appointment time is nine in the morning.'},
+ {en:'Detention time', es:'Tiempo de detención', cat:'dispatch', def:'Tiempo extra de espera en un lugar de carga o descarga que puede generar un cargo.', pron:'di-TEN-shon taim', ex:'I have two hours of detention time at this dock.'},
+ {en:'Lumper fee', es:'Cuota de estibador', cat:'dispatch', def:'Pago por el servicio de descarga manual de la mercancía.', pron:'LAM-per fi', ex:'The lumper fee for this delivery is forty dollars.'},
+ {en:'Proof of Delivery', es:'Comprobante de entrega', cat:'dispatch', def:'Documento firmado que confirma que la entrega fue completada.', pron:'pruf of di-LI-ve-ri', ex:'Please send the Proof of Delivery to the office.'},
+ {en:'Dock number', es:'Número de andén', cat:'terminales', def:'Ubicación específica donde se carga o descarga el camión.', pron:'dok NAM-ber', ex:'Please back into dock number seven.'},
+ {en:'Seal number', es:'Número de sello', cat:'terminales', def:'Código del sello de seguridad colocado en el tráiler.', pron:'sil NAM-ber', ex:'Here is your seal number for the trailer.'},
+ {en:'Load confirmation', es:'Confirmación de carga', cat:'terminales', def:'Documento que confirma los detalles de una carga asignada.', pron:'lod kon-fer-MEI-shon', ex:'I received the load confirmation this morning.'},
+ {en:'Check-in', es:'Registro de entrada', cat:'terminales', def:'Proceso de anunciar su llegada a una terminal o almacén.', pron:'chek-in', ex:'Please check in at the front desk.'},
+ {en:'Damaged cargo', es:'Carga dañada', cat:'carga', def:'Mercancía que presenta daño físico durante el transporte.', pron:'DA-mijd KAR-go', ex:'We found some damaged cargo during unloading.'},
+ {en:'Reject the load', es:'Rechazar la carga', cat:'carga', def:'Negarse a aceptar una mercancía por daño o error.', pron:'ri-JEKT de lod', ex:'The receiver decided to reject the load.'},
+ {en:'Overweight permit', es:'Permiso de sobrepeso', cat:'basculas', def:'Autorización especial para transportar una carga que excede el peso normal.', pron:'O-ver-weit PER-mit', ex:'You will need an overweight permit for this route.'},
+ {en:'Tow truck', es:'Grúa', cat:'emergencias', def:'Vehículo que remolca camiones averiados.', pron:'to trak', ex:'I need a tow truck for my trailer.'},
+ {en:'Hazard lights', es:'Luces de emergencia', cat:'emergencias', def:'Luces intermitentes que indican peligro o vehículo detenido.', pron:'HA-zerd laits', ex:'Turn on your hazard lights immediately.'},
+ {en:'Mile marker', es:'Señal de milla', cat:'emergencias', def:'Poste que indica la distancia en millas a lo largo de la carretera.', pron:'mail MAR-ker', ex:"I'm near mile marker 45 on the highway."},
+ {en:'Exchange information', es:'Intercambiar información', cat:'emergencias', def:'Compartir datos de seguro y contacto tras un accidente.', pron:'iks-CHEINCH in-for-MEI-shon', ex:'We need to exchange information after the accident.'},
+ {en:'Citation', es:'Multa / infracción', cat:'dot', def:'Documento oficial que reporta una violación de tránsito.', pron:'sai-TEI-shon', ex:'The officer gave me a citation for the broken light.'},
+ {en:'Warning', es:'Advertencia', cat:'dot', def:'Aviso oficial sin sanción económica.', pron:'WOR-ning', ex:"I'll give you a warning today."},
+];
+
+const TESTIMONIALS = [
+  {name:'Reynaldo M. (demo)', role:'Conductor OTR', text:'Practicar la inspección DOT en voz alta me quitó el miedo antes de cruzar por primera vez sola una parada.'},
+  {name:'Yesenia C. (demo)', role:'Conductora regional', text:'El diccionario técnico me ayudó a entender lo que dice dispatch sin tener que traducir todo en mi cabeza.'},
+  {name:'Josué T. (demo)', role:'Conductor local', text:'Me gusta poder practicar de noche, cuando ya terminé mi turno, sin depender de un horario de clase.'},
+];
+
+const FAQ = [
+  {q:'¿Necesito conexión a internet para practicar?', a:'La versión de demostración funciona en tu navegador. La versión final incluirá simulaciones por voz en línea y ejercicios que podrás descargar para practicar sin conexión.'},
+  {q:'¿La plataforma reemplaza una certificación oficial del DOT?', a:'No. Esta es una herramienta educativa de práctica de inglés. No otorga certificaciones oficiales ni sustituye asesoría legal.'},
+  {q:'¿Mis grabaciones de voz se guardan?', a:'No se almacena audio sin tu consentimiento. Solo se guarda tu progreso (puntajes y estadísticas) de forma local en tu dispositivo.'},
+  {q:'¿Puedo usarla mientras conduzco?', a:'No. La plataforma debe usarse únicamente cuando el camión está estacionado y el motor apagado, por tu seguridad.'},
+  {q:'¿Qué nivel de inglés necesito para empezar?', a:'Ninguno. La evaluación inicial identifica tu nivel (A1 a B2) y te recomienda un plan personalizado.'},
+];
+
+const PLANS = [
+  {id:'free', name:'Prueba gratuita', price:'$0', tag:'Para empezar', features:['Evaluación de nivel','Acceso limitado a simulaciones','Vocabulario básico'], cta:'Comenzar gratis'},
+  {id:'driver', name:'Plan Driver', price:'Próximamente', tag:'Más popular', features:['Simulaciones ilimitadas','Todos los módulos','Corrección de pronunciación','Historial de progreso','Plan personalizado'], cta:'Solicitar acceso'},
+  {id:'fleet', name:'Plan Fleet', price:'Próximamente', tag:'Para flotas', features:['Acceso para varios conductores','Panel del administrador','Reportes de progreso','Asignación de prácticas','Seguimiento por conductor'], cta:'Contactar a ventas'},
+];
+
+/* ============================= ESTADO / ALMACENAMIENTO ============================= */
+const STORE_KEY = 'mendoza_dot_english_v1';
+function defaultState(){
+  return {
+    onboarded:false, loggedIn:false,
+    user:{name:'', country:'', level:'A2', years:'', opType:'OTR', difficulties:[], dailyMinutes:15, speed:'normal'},
+    progress:{streak:0,lastPracticeDate:null,totalMinutes:0,sessions:[],wordsLearned:[],moduleStats:{}},
+    settings:{darkMode:false, adminVocab:[], adminScenarioStatus:{}}
+  };
+}
+function loadState(){
+  try{ const raw = localStorage.getItem(STORE_KEY); if(!raw) return defaultState();
+    const parsed = JSON.parse(raw); return Object.assign(defaultState(), parsed,
+      {user:Object.assign(defaultState().user,parsed.user||{}),
+       progress:Object.assign(defaultState().progress,parsed.progress||{}),
+       settings:Object.assign(defaultState().settings,parsed.settings||{})});
+  }catch(e){ return defaultState(); }
+}
+function saveState(){ localStorage.setItem(STORE_KEY, JSON.stringify(STATE)); }
+let STATE = loadState();
+function applyDarkMode(){ document.documentElement.classList.toggle('dark', !!STATE.settings.darkMode); }
+applyDarkMode();
+
+function toast(msg){
+  const wrap = document.getElementById('toastWrap');
+  const el = document.createElement('div'); el.className='toast'; el.textContent = msg;
+  wrap.appendChild(el); setTimeout(()=>el.remove(), 3200);
+}
+
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function recordSession(scenario, scores, durationMin, wordsUsed){
+  const s = STATE.progress;
+  s.sessions.unshift({id:'s'+Date.now(), scenarioId:scenario.id, title:scenario.title, category:scenario.category,
+    date:new Date().toISOString(), scores, durationMin});
+  s.totalMinutes += durationMin;
+  const today = todayStr();
+  if(s.lastPracticeDate !== today){
+    const y = new Date(Date.now()-86400000).toISOString().slice(0,10);
+    s.streak = (s.lastPracticeDate === y) ? s.streak+1 : 1;
+    s.lastPracticeDate = today;
+  }
+  (wordsUsed||[]).forEach(w=>{ if(!s.wordsLearned.includes(w)) s.wordsLearned.push(w); });
+  s.moduleStats[scenario.category] = (s.moduleStats[scenario.category]||0)+1;
+  saveState();
+}
+
+/* ============================= MOTOR DE VOZ (DEMOSTRATIVO) ============================= */
+/* PUNTO DE INTEGRACIÓN: reemplazar por STT/TTS de proveedor (p.ej. Deepgram + ElevenLabs)
+   y por el motor conversacional (LLM) en producción. Autenticación, base de datos y pagos
+   también quedan marcados como puntos de integración a continuación. */
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+const VoiceEngine = {
+  supported: !!SpeechRec && 'speechSynthesis' in window,
+  recognizing:false, _rec:null,
+  speak(text, rate){
+    return new Promise(res=>{
+      if(!('speechSynthesis' in window)){ res(); return; }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang='en-US'; u.rate = rate || 1;
+      u.onend = res; u.onerror = res;
+      window.speechSynthesis.speak(u);
+    });
+  },
+  stop(){ if('speechSynthesis' in window) window.speechSynthesis.cancel(); if(this._rec){ try{this._rec.stop()}catch(e){} } },
+  listen(onResult, onEnd){
+    if(!SpeechRec){ onEnd && onEnd('unsupported'); return; }
+    const rec = new SpeechRec(); this._rec = rec;
+    rec.lang='en-US'; rec.interimResults = true; rec.maxAlternatives = 1; rec.continuous = false;
+    let finalTranscript = '';
+    this.recognizing = true;
+    rec.onresult = (e)=>{
+      let interim='';
+      for(let i=e.resultIndex;i<e.results.length;i++){
+        if(e.results[i].isFinal) finalTranscript += e.results[i][0].transcript;
+        else interim += e.results[i][0].transcript;
+      }
+      onResult && onResult(finalTranscript, interim);
+    };
+    rec.onerror = ()=>{ this.recognizing=false; onEnd && onEnd('error'); };
+    rec.onend = ()=>{ this.recognizing=false; onEnd && onEnd('done', finalTranscript); };
+    try{ rec.start(); }catch(e){ onEnd && onEnd('error'); }
+  }
+};
+
+function scoreTranscript(transcript, keywords){
+  const t = (transcript||'').toLowerCase();
+  if(!t.trim()) return 0;
+  let hits = 0;
+  keywords.forEach(k=>{ if(t.includes(k.toLowerCase())) hits++; });
+  const coverage = keywords.length ? hits/keywords.length : 0.5;
+  const lengthScore = Math.min(1, t.split(' ').length/6);
+  return Math.round(Math.min(1, coverage*0.7 + lengthScore*0.3)*100)/100;
+}
+
+/* ============================= ROUTER ============================= */
+const ROUTES = {};
+function route(path, fn){ ROUTES[path]=fn; }
+function go(hash){ window.location.hash = hash; }
+function currentRoute(){
+  const h = (window.location.hash||'#/landing').slice(2) || 'landing';
+  return h.split('/');
+}
+window.addEventListener('hashchange', render);
+
+function requireAuth(){
+  if(!STATE.onboarded){ go('#/onboarding'); return false; }
+  return true;
+}
+
+/* ============================= COMPONENTES DE NAVEGACIÓN ============================= */
+const NAV_ITEMS = [
+  {id:'dashboard', label:'Inicio', icon:'🏠'},
+  {id:'modules', label:'Módulos', icon:'📚'},
+  {id:'scenarios', label:'Práctica', icon:'🎙️'},
+  {id:'dictionary', label:'Diccionario', icon:'📖'},
+  {id:'profile', label:'Perfil', icon:'⚙️'},
+];
+function renderTopNav(active){
+  const loggedArea = STATE.onboarded;
+  document.getElementById('topnav').innerHTML = `
+  <div class="sticky top-0 z-30 bg-[var(--paper)] border-b" style="border-color:var(--line)">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 cursor-pointer" data-nav="${loggedArea?'dashboard':'landing'}">
+        <img src="${LOGO_SRC}" class="w-9 h-9 rounded-full border" style="border-color:var(--line)" alt="The Mendoza Law Firm">
+        <div class="leading-tight">
+          <div class="text-[11px] font-bold tracking-wide" style="color:var(--navy)">THE MENDOZA LAW FIRM</div>
+          <div class="text-[11px] opacity-60 -mt-0.5">Responde al DOT en inglés</div>
+        </div>
+      </div>
+      ${loggedArea?`
+      <nav class="hidden md:flex items-center gap-6">
+        ${NAV_ITEMS.map(i=>`<a class="navlink ${active===i.id?'active':''}" data-nav="${i.id}">${i.label}</a>`).join('')}
+      </nav>
+      <div class="hidden md:flex items-center gap-2">
+        <button class="btn btn-outline btn-sm" data-nav="subscription">Suscripción</button>
+        <button class="btn btn-primary btn-sm" data-nav="scenarios">🎙️ Practicar</button>
+      </div>`:`
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="navlink" data-anchor="how">Cómo funciona</a>
+        <a class="navlink" data-anchor="modules">Módulos</a>
+        <a class="navlink" data-anchor="plans">Planes</a>
+        <a class="navlink" data-anchor="faq">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-outline btn-sm" data-nav="login">Iniciar sesión</button>
+        <button class="btn btn-primary btn-sm" data-nav="onboarding">Comenzar gratis</button>
+      </div>`}
+    </div>
+  </div>`;
+}
+function renderBottomNav(active){
+  const el = document.getElementById('bottomnav');
+  if(!STATE.onboarded){ el.innerHTML=''; return; }
+  el.innerHTML = `<div class="bottomnav">
+    ${NAV_ITEMS.map(i=>`<button class="${active===i.id?'active':''}" data-nav="${i.id}"><span style="font-size:1.15rem">${i.icon}</span>${i.label}</button>`).join('')}
+  </div>`;
+}
+
+/* ============================= UTILIDADES DE UI ============================= */
+function wrap(inner, {topPad=true}={}){
+  return `<div class="max-w-6xl mx-auto px-4 md:px-6 ${topPad?'py-6 md:py-10':''}">${inner}</div>`;
+}
+function sectionTitle(kicker, title, sub){
+  return `<div class="mb-6 md:mb-8">
+    ${kicker?`<div class="badge badge-orange mb-3">${kicker}</div>`:''}
+    <h2 class="display text-2xl md:text-3xl font-semibold" style="color:var(--navy)">${title}</h2>
+    ${sub?`<p class="mt-2 opacity-70 max-w-2xl">${sub}</p>`:''}
+  </div>`;
+}
+function moduleColorVar(c){ return {navy:'var(--navy)',orange:'var(--orange)',green:'var(--green)',red:'var(--red)'}[c]||'var(--navy)'; }
+
+/* ============================= LANDING ============================= */
+function renderLanding(){
+  renderTopNav(null); renderBottomNav(null);
+  document.getElementById('app').innerHTML = `
+  <section class="border-b" style="border-color:var(--line);background:linear-gradient(180deg,var(--paper),var(--mist))">
+    ${wrap(`
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="badge badge-navy mb-4">Herramienta educativa · The Mendoza Law Firm</div>
+          <h1 class="display text-4xl md:text-5xl font-semibold leading-[1.08]" style="color:var(--navy)">Responde al DOT en inglés sin miedo</h1>
+          <p class="mt-4 text-lg font-medium opacity-80">Aprende el inglés que un camionero realmente utiliza: DOT, mecánica, dispatch, básculas, terminales y más.</p>
+          <p class="mt-3 opacity-70">Practica las 24 horas con un instructor de inteligencia artificial y simulaciones de voz basadas en situaciones reales del transporte comercial.</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <button class="btn btn-primary" data-nav="onboarding">🎙️ Comenzar práctica gratuita</button>
+            <button class="btn btn-outline" data-anchor="demo">Ver cómo funciona</button>
+          </div>
+          <p class="mt-4 text-xs opacity-60">No sustituye asesoría legal ni certificación oficial del DOT. Herramienta educativa de práctica de idioma.</p>
+        </div>
+        <div class="card p-5 md:p-6" id="demo">
+          <div class="flex items-center justify-between mb-4">
+            <span class="badge badge-green">Demostración de conversación</span>
+            <button class="btn btn-ghost btn-sm" data-action="play-demo">🔊 Escuchar</button>
+          </div>
+          <div id="demoConvo" class="space-y-3 text-sm"></div>
+        </div>
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line)">
+    ${wrap(`${sectionTitle('Situaciones reales','Practica lo que de verdad vas a vivir en la carretera')}
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        ${MODULES.map(m=>`<div class="card p-5" id="modules">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-3" style="background:${moduleColorVar(m.color)}22">${m.icon}</div>
+          <h3 class="font-bold" style="color:var(--navy)">${m.name}</h3>
+          <p class="text-sm opacity-70 mt-1">${m.items.slice(0,3).join(' · ')}…</p>
+        </div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line);background:var(--mist)" id="how">
+    ${wrap(`${sectionTitle('Cómo funciona','Cuatro pasos para perder el miedo a hablar inglés')}
+      <div class="grid md:grid-cols-4 gap-4">
+        ${[['1','Elige tu escenario','DOT, básculas, mecánica, dispatch, terminales o emergencias.'],
+           ['2','Activa tu micrófono','Habla en inglés como si estuvieras ahí. Sin guiones memorizados.'],
+           ['3','Recibe corrección','La IA corrige gramática, pronunciación y vocabulario, sin desmotivarte.'],
+           ['4','Mide tu progreso','Consulta tu dashboard: minutos, racha, módulos dominados y más.']]
+           .map(([n,t,d])=>`<div class="card p-5"><div class="text-2xl font-bold mb-2" style="color:var(--orange)">${n}</div>
+             <h4 class="font-bold mb-1" style="color:var(--navy)">${t}</h4><p class="text-sm opacity-70">${d}</p></div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line)">
+    ${wrap(`${sectionTitle('Beneficios','Diseñado para la vida de un conductor')}
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        ${[['🗣️','Pierde el miedo a hablar'],['👂','Entiende al oficial DOT'],['🔧','Vocabulario técnico real'],['📈','Progreso medible'],
+           ['🕑','Disponible 24/7'],['🎧','Mejora tu pronunciación'],['✅','Respuestas honestas y profesionales'],['📚','Diccionario de camionero']]
+           .map(([i,t])=>`<div class="card p-4 flex items-center gap-3"><span class="text-2xl">${i}</span><span class="font-semibold text-sm">${t}</span></div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line);background:var(--mist)">
+    ${wrap(`${sectionTitle('Seguimiento de progreso','Tu propio dashboard de avance')}
+      <div class="card p-6 grid sm:grid-cols-4 gap-4 text-center">
+        ${[['12','Simulaciones completas'],['86%','Precisión promedio'],['9','Días de racha'],['64','Palabras nuevas']]
+          .map(([n,l])=>`<div><div class="text-3xl font-bold" style="color:var(--navy)">${n}</div><div class="text-xs opacity-60 mt-1">${l} (ejemplo)</div></div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line)">
+    ${wrap(`${sectionTitle('Testimonios de muestra','Ejemplos ilustrativos — no corresponden a usuarios reales')}
+      <div class="grid md:grid-cols-3 gap-4">
+        ${TESTIMONIALS.map(t=>`<div class="card p-5">
+          <p class="text-sm opacity-80">"${t.text}"</p>
+          <div class="mt-3 text-sm font-bold" style="color:var(--navy)">${t.name}</div>
+          <div class="text-xs opacity-60">${t.role}</div>
+        </div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section class="border-b" style="border-color:var(--line);background:var(--mist)" id="plans">
+    ${wrap(`${sectionTitle('Planes de suscripción','Elige cómo quieres practicar')}
+      <div class="grid md:grid-cols-3 gap-5">
+        ${PLANS.map(p=>`<div class="card p-6 flex flex-col ${p.id==='driver'?'ring-2':''}" style="${p.id==='driver'?'border-color:var(--orange)':''}">
+          <span class="badge badge-navy w-fit mb-3">${p.tag}</span>
+          <h3 class="font-bold text-lg" style="color:var(--navy)">${p.name}</h3>
+          <div class="text-2xl font-bold my-2">${p.price}</div>
+          <ul class="text-sm opacity-80 space-y-2 mb-5 flex-1">${p.features.map(f=>`<li>✓ ${f}</li>`).join('')}</ul>
+          <button class="btn ${p.id==='driver'?'btn-primary':'btn-outline'} w-full" data-nav="onboarding">${p.cta}</button>
+        </div>`).join('')}
+      </div>
+    `)}
+  </section>
+
+  <section id="faq">
+    ${wrap(`${sectionTitle('Preguntas frecuentes','')}
+      <div class="max-w-2xl space-y-3">
+        ${FAQ.map((f,i)=>`<details class="card p-4">
+          <summary class="font-semibold cursor-pointer" style="color:var(--navy)">${f.q}</summary>
+          <p class="text-sm opacity-70 mt-2">${f.a}</p>
+        </details>`).join('')}
+      </div>
+      <div class="card p-8 mt-10 text-center" style="background:var(--navy)">
+        <h3 class="display text-2xl font-semibold text-white">¿Listo para responder con confianza?</h3>
+        <p class="text-white/70 mt-2">Comienza tu evaluación gratuita en menos de 2 minutos.</p>
+        <button class="btn btn-primary mt-5" data-nav="onboarding">Comenzar práctica gratuita</button>
+      </div>
+    `, {topPad:true})}
+  </section>
+  <footer class="py-8 text-center text-xs opacity-60 px-4">
+    © ${new Date().getFullYear()} The Mendoza Law Firm — Herramienta educativa. No constituye asesoría legal ni certificación oficial del DOT.
+  </footer>
+  `;
+  const convoEl = document.getElementById('demoConvo');
+  const convo = [
+    {who:'DOT Officer', text:'Good morning, driver. May I see your license and vehicle registration?'},
+    {who:'Driver', text:'Yes, officer. Here is my license and registration.'},
+    {who:'AI Instructor', text:'Good response. Your answer was clear and professional.'},
+  ];
+  convoEl.innerHTML = convo.map(c=>`<div class="flex gap-2 items-start">
+    <span class="badge ${c.who==='AI Instructor'?'badge-green':'badge-navy'}">${c.who}</span>
+    <p class="text-sm">${c.text}</p></div>`).join('');
+  document.getElementById('demoConvo').dataset.lines = JSON.stringify(convo);
+}
+
+/* ============================= ONBOARDING ============================= */
+let onboardStep = 0;
+const ONBOARD_QUESTIONS = [
+  {key:'name', label:'¿Cuál es tu nombre?', type:'text', placeholder:'Ej. Roberto Gómez'},
+  {key:'country', label:'¿De qué país eres originario?', type:'text', placeholder:'Ej. México'},
+  {key:'level', label:'¿Cuál crees que es tu nivel de inglés?', type:'choice', options:['A1 - Principiante','A2 - Básico','B1 - Intermedio','B2 - Intermedio avanzado']},
+  {key:'years', label:'¿Cuántos años de experiencia tienes manejando?', type:'text', placeholder:'Ej. 5'},
+  {key:'opType', label:'¿Qué tipo de operación manejas?', type:'choice', options:['Local','Regional','OTR','Internacional']},
+  {key:'difficulties', label:'¿Qué situaciones te generan más dificultad?', type:'multi', options:['Inspecciones DOT','Básculas','Mecánica','Dispatch','Terminales','Emergencias']},
+  {key:'dailyMinutes', label:'¿Cuánto tiempo deseas practicar al día?', type:'choice', options:['10 minutos','15 minutos','30 minutos','45+ minutos']},
+  {key:'speed', label:'¿A qué velocidad prefieres empezar?', type:'choice', options:['Lenta','Normal','Progresiva']},
+];
+function renderOnboarding(){
+  renderTopNav(null); renderBottomNav(null);
+  if(onboardStep >= ONBOARD_QUESTIONS.length){ renderOnboardingDiagnostic(); return; }
+  const qd = ONBOARD_QUESTIONS[onboardStep];
+  const pct = Math.round((onboardStep/ONBOARD_QUESTIONS.length)*100);
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-lg mx-auto">
+      <div class="scorebar mb-6"><div style="width:${pct}%"></div></div>
+      <div class="card p-6">
+        <div class="text-xs font-bold opacity-50 mb-1">Pregunta ${onboardStep+1} de ${ONBOARD_QUESTIONS.length}</div>
+        <h2 class="text-xl font-bold mb-5" style="color:var(--navy)">${qd.label}</h2>
+        <div id="qArea"></div>
+        <div class="flex justify-between mt-6">
+          <button class="btn btn-ghost btn-sm" data-action="ob-back" ${onboardStep===0?'disabled style="opacity:.4"':''}>← Atrás</button>
+          <button class="btn btn-primary" data-action="ob-next">Continuar →</button>
+        </div>
+      </div>
+    </div>
+  `);
+  const qArea = document.getElementById('qArea');
+  const current = STATE.user[qd.key];
+  if(qd.type==='text'){
+    qArea.innerHTML = `<input class="input" id="obInput" placeholder="${qd.placeholder}" value="${current||''}">`;
+  } else if(qd.type==='choice'){
+    qArea.innerHTML = `<div class="grid grid-cols-2 gap-2">${qd.options.map(o=>{
+      const val=o.split(' - ')[0].toLowerCase();
+      const sel = (String(current).toLowerCase().startsWith(val.toLowerCase()) || current===o);
+      return `<button class="chip ${sel?'active':''}" style="text-align:left" data-action="ob-choice" data-val="${o}">${o}</button>`;
+    }).join('')}</div>`;
+  } else if(qd.type==='multi'){
+    const arr = Array.isArray(current)?current:[];
+    qArea.innerHTML = `<div class="grid grid-cols-2 gap-2">${qd.options.map(o=>`
+      <button class="chip ${arr.includes(o)?'active':''}" data-action="ob-multi" data-val="${o}">${o}</button>`).join('')}</div>`;
+  }
+}
+function renderOnboardingDiagnostic(){
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-lg mx-auto text-center card p-8">
+      <div class="text-4xl mb-3">🎧</div>
+      <h2 class="text-xl font-bold" style="color:var(--navy)">Evaluación diagnóstica por voz</h2>
+      <p class="opacity-70 mt-2 text-sm">Vamos a hacerte una pregunta corta en inglés para calibrar tu punto de partida. Responde por voz cuando estés listo.</p>
+      <div class="card p-4 my-5" style="background:var(--mist)">
+        <p class="font-semibold">"How long have you been driving trucks?"</p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <button class="mic-btn" id="diagMic" data-action="ob-diag-mic">🎤</button>
+        <div id="diagStatus" class="text-xs opacity-60">Toca el micrófono para responder</div>
+        <div id="diagTranscript" class="text-sm font-medium min-h-[1.5rem]"></div>
+      </div>
+      <button class="btn btn-primary w-full mt-6" data-action="ob-finish">Ver mi plan recomendado</button>
+    </div>
+  `);
+}
+function computeRecommendedPlan(){
+  const lvl = (STATE.user.level||'A2').slice(0,2);
+  const mins = STATE.user.dailyMinutes || '15 minutos';
+  const focus = (STATE.user.difficulties&&STATE.user.difficulties[0]) || 'Inspecciones DOT';
+  return {lvl, mins, focus};
+}
+
+/* ============================= DASHBOARD ============================= */
+function renderDashboard(){
+  if(!requireAuth()) return;
+  renderTopNav('dashboard'); renderBottomNav('dashboard');
+  const p = STATE.progress;
+  const avg = p.sessions.length ? Math.round(p.sessions.reduce((a,s)=>a+avgScore(s.scores),0)/p.sessions.length) : 0;
+  const plan = computeRecommendedPlan();
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+      <div>
+        <h1 class="display text-2xl font-semibold" style="color:var(--navy)">Hola, ${STATE.user.name||'conductor'} 👋</h1>
+        <p class="opacity-60 text-sm">Nivel actual: <b>${STATE.user.level}</b> · Meta diaria: ${STATE.user.dailyMinutes}</p>
+      </div>
+      <button class="btn btn-primary" data-nav="scenarios">🎙️ INICIAR PRÁCTICA DE VOZ</button>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      ${[['🔥',p.streak,'Días de racha'],['⏱️',p.totalMinutes,'Minutos practicados'],['✅',p.sessions.length,'Simulaciones completadas'],['📊',avg+'%','Promedio general']]
+        .map(([i,n,l])=>`<div class="card p-4"><div class="text-2xl">${i}</div><div class="text-2xl font-bold mt-1" style="color:var(--navy)">${n}</div><div class="text-xs opacity-60">${l}</div></div>`).join('')}
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Evolución de tu precisión</h3>
+        <canvas id="progressChart" height="140"></canvas>
+      </div>
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Plan de práctica recomendado</h3>
+        <div class="badge badge-orange mb-2">Enfócate en: ${plan.focus}</div>
+        <p class="text-sm opacity-70">Nivel ${plan.lvl} · ${plan.mins} al día</p>
+        <button class="btn btn-navy btn-sm w-full mt-4" data-nav="plan">Ver plan completo</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Módulos</h3>
+        <div class="space-y-2">
+          ${MODULES.map(m=>{
+            const done = p.moduleStats[m.id]||0;
+            const pct = Math.min(100, done*20);
+            return `<div class="flex items-center gap-3">
+              <span class="text-lg">${m.icon}</span>
+              <div class="flex-1">
+                <div class="flex justify-between text-xs mb-1"><span class="font-semibold">${m.name}</span><span class="opacity-50">${done} sesiones</span></div>
+                <div class="scorebar"><div style="width:${pct}%;background:${moduleColorVar(m.color)}"></div></div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Historial reciente</h3>
+        ${p.sessions.length===0?`<p class="text-sm opacity-60">Aún no tienes simulaciones. ¡Empieza tu primera práctica!</p>`:
+        p.sessions.slice(0,4).map(s=>`<div class="flex items-center justify-between py-2 border-b last:border-0" style="border-color:var(--line)">
+          <div><div class="font-semibold text-sm">${s.title}</div><div class="text-xs opacity-50">${new Date(s.date).toLocaleDateString('es-MX')}</div></div>
+          <span class="badge badge-green">${avgScore(s.scores)}%</span>
+        </div>`).join('')}
+        <button class="btn btn-outline btn-sm w-full mt-3" data-nav="history">Ver historial completo</button>
+      </div>
+    </div>
+  `);
+  drawProgressChart(p.sessions);
+}
+function avgScore(scores){
+  const vals = Object.values(scores||{});
+  if(!vals.length) return 0;
+  return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length*10);
+}
+function drawProgressChart(sessions){
+  const c = document.getElementById('progressChart'); if(!c) return;
+  const ctx = c.getContext('2d');
+  const w = c.width = c.clientWidth; const h = c.height = 140;
+  ctx.clearRect(0,0,w,h);
+  const data = sessions.slice(0,8).reverse().map(s=>avgScore(s.scores));
+  if(data.length<1){ ctx.fillStyle='#8996A3'; ctx.font='13px Inter'; ctx.fillText('Sin datos todavía — completa una simulación.',10,h/2); return; }
+  const max=100, pad=24;
+  ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--green');
+  ctx.lineWidth=3; ctx.beginPath();
+  data.forEach((v,i)=>{
+    const x = pad + i*((w-2*pad)/Math.max(1,data.length-1));
+    const y = h-pad - (v/max)*(h-2*pad);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--orange');
+  data.forEach((v,i)=>{
+    const x = pad + i*((w-2*pad)/Math.max(1,data.length-1));
+    const y = h-pad - (v/max)*(h-2*pad);
+    ctx.beginPath(); ctx.arc(x,y,4,0,7); ctx.fill();
+  });
+}
+
+/* ============================= CATÁLOGO DE MÓDULOS ============================= */
+function renderModules(id){
+  if(!requireAuth()) return;
+  renderTopNav('modules'); renderBottomNav('modules');
+  if(id){
+    const m = MODULES.find(x=>x.id===id);
+    const scs = SCENARIOS.filter(s=>s.category===id);
+    document.getElementById('app').innerHTML = wrap(`
+      <button class="btn btn-ghost btn-sm mb-4" data-nav="modules">← Todos los módulos</button>
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background:${moduleColorVar(m.color)}22">${m.icon}</div>
+        <h1 class="display text-2xl font-semibold" style="color:var(--navy)">${m.name}</h1>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 my-6">
+        ${m.items.map(i=>`<div class="card p-3 text-sm font-medium">${i}</div>`).join('')}
+      </div>
+      <h3 class="font-bold mb-3" style="color:var(--navy)">Escenarios de este módulo</h3>
+      <div class="grid sm:grid-cols-2 gap-4">
+        ${scs.map(scenarioCard).join('') || '<p class="opacity-60 text-sm">Próximamente más escenarios en este módulo.</p>'}
+      </div>
+    `);
+    return;
+  }
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Catálogo','Módulos de aprendizaje')}
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      ${MODULES.map(m=>{
+        const count = SCENARIOS.filter(s=>s.category===m.id).length;
+        return `<button class="card p-5 text-left" data-nav="modules/${m.id}">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-3" style="background:${moduleColorVar(m.color)}22">${m.icon}</div>
+        <h3 class="font-bold" style="color:var(--navy)">${m.name}</h3>
+        <p class="text-xs opacity-60 mt-1">${m.items.length} temas · ${count} escenarios</p>
+      </button>`;}).join('')}
+    </div>
+  `);
+}
+
+function scenarioCard(s){
+  return `<div class="card p-4">
+    <div class="flex justify-between items-start mb-2">
+      <span class="badge badge-navy">${s.level}</span>
+      <span class="text-xs opacity-50">${s.character}</span>
+    </div>
+    <h4 class="font-bold" style="color:var(--navy)">${s.title}</h4>
+    <p class="text-xs opacity-60 mt-1">${s.objective}</p>
+    <button class="btn btn-primary btn-sm w-full mt-3" data-nav="simulate/${s.id}">🎙️ Practicar</button>
+  </div>`;
+}
+
+/* ============================= SELECTOR DE ESCENARIOS ============================= */
+let scenarioFilter = 'all';
+function renderScenarios(){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  const list = scenarioFilter==='all'?SCENARIOS:SCENARIOS.filter(s=>s.category===scenarioFilter);
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Práctica de voz','Elige un escenario y activa tu micrófono')}
+    <div class="flex flex-wrap gap-2 mb-6">
+      <button class="chip ${scenarioFilter==='all'?'active':''}" data-action="filter-scenario" data-val="all">Todos (${SCENARIOS.length})</button>
+      ${MODULES.map(m=>`<button class="chip ${scenarioFilter===m.id?'active':''}" data-action="filter-scenario" data-val="${m.id}">${m.icon} ${m.name}</button>`).join('')}
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">${list.map(scenarioCard).join('')}</div>
+
+    <div class="mt-10">
+      ${sectionTitle('Otras formas de practicar','Herramientas independientes de vocabulario y comprensión')}
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="card p-5"><h4 class="font-bold" style="color:var(--navy)">⚡ Respuesta rápida</h4><p class="text-xs opacity-60 mt-1">Preguntas comunes de un oficial DOT con tiempo limitado para responder.</p><button class="btn btn-navy btn-sm w-full mt-3" data-nav="quick">Practicar</button></div>
+        <div class="card p-5"><h4 class="font-bold" style="color:var(--navy)">👂 Comprensión auditiva</h4><p class="text-xs opacity-60 mt-1">Escucha la pregunta sin texto y practica tu oído.</p><button class="btn btn-navy btn-sm w-full mt-3" data-nav="listening">Practicar</button></div>
+        <div class="card p-5"><h4 class="font-bold" style="color:var(--navy)">🗣️ Pronunciación</h4><p class="text-xs opacity-60 mt-1">Repite frases clave y recibe retroalimentación de claridad.</p><button class="btn btn-navy btn-sm w-full mt-3" data-nav="pronunciation">Practicar</button></div>
+      </div>
+    </div>
+  `);
+}
+
+/* ============================= SIMULACIÓN POR VOZ ============================= */
+let SIM = null;
+function startSimulation(scenarioId, mode){
+  const scenario = SCENARIOS.find(s=>s.id===scenarioId);
+  SIM = {scenario, mode: mode||'real', step:0, transcripts:[], scores:[], startedAt:Date.now(), status:'idle', speed:1, lastFinal:''};
+}
+function renderSimulate(scenarioId, mode){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  if(!SIM || SIM.scenario.id!==scenarioId) startSimulation(scenarioId, mode);
+  const {scenario} = SIM;
+  const qIndex = SIM.step;
+  const finished = qIndex >= scenario.questions.length;
+  const currentQ = !finished ? scenario.questions[qIndex] : null;
+  const progressPct = Math.round((qIndex/scenario.questions.length)*100);
+
+  if(finished){ renderResults(); return; }
+
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-2xl mx-auto">
+      <div class="badge badge-red mb-3">⚠️ Practica únicamente cuando estés estacionado</div>
+      <div class="flex items-center justify-between mb-2">
+        <div>
+          <div class="text-xs opacity-50">${scenario.location}</div>
+          <h2 class="font-bold" style="color:var(--navy)">${scenario.title}</h2>
+        </div>
+        <span class="badge badge-navy">${scenario.level}</span>
+      </div>
+      <div class="scorebar mb-5"><div style="width:${progressPct}%"></div></div>
+
+      <div class="card p-5 mb-4">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background:var(--navy);color:#fff">🎓</span>
+          <div><div class="font-bold text-sm">${scenario.character}</div><div class="text-xs opacity-50">Pregunta ${qIndex+1} de ${scenario.questions.length}</div></div>
+        </div>
+        <p class="text-lg font-semibold" id="questionText">${currentQ.en}</p>
+        <p class="text-sm opacity-50 mt-1" id="questionEs" style="display:none">${currentQ.es}</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <button class="btn btn-ghost btn-sm" data-action="sim-repeat">🔁 Repetir pregunta</button>
+          <button class="btn btn-ghost btn-sm" data-action="sim-slow">🐢 Hablar más lento</button>
+          <button class="btn btn-ghost btn-sm" data-action="sim-help">🆘 Necesito ayuda</button>
+          <button class="btn btn-ghost btn-sm" data-action="sim-es">🇪🇸 Ver en español</button>
+        </div>
+      </div>
+
+      <div class="card p-6 flex flex-col items-center gap-3">
+        <button class="mic-btn" id="simMic" data-action="sim-mic">🎤</button>
+        <div id="simStatus" class="text-sm font-semibold opacity-70">Toca el micrófono para responder</div>
+        <div id="simTranscript" class="text-center font-medium min-h-[1.6rem]"></div>
+        <div id="simFeedback" class="w-full"></div>
+        <div class="flex gap-2 mt-2">
+          <button class="btn btn-outline btn-sm" data-action="sim-type" ${VoiceEngine.supported?'':''}>${VoiceEngine.supported?'⌨️ Escribir respuesta':'⌨️ Escribir respuesta (modo sin micrófono)'}</button>
+          <button class="btn btn-primary btn-sm" id="simNext" data-action="sim-next" style="display:none">Siguiente pregunta →</button>
+        </div>
+      </div>
+
+      <button class="btn btn-outline w-full mt-5" data-action="sim-end">Terminar simulación</button>
+      ${!VoiceEngine.supported?`<p class="text-xs text-center opacity-50 mt-3">Tu navegador no tiene reconocimiento de voz nativo. Usa "Escribir respuesta" para esta demostración; en producción se integrará un motor de voz dedicado.</p>`:''}
+    </div>
+  `);
+}
+function simSpeakQuestion(){
+  if(!SIM) return;
+  const qd = SIM.scenario.questions[SIM.step] || {en:SIM.scenario.opening};
+  document.getElementById('simStatus').textContent = '🔊 Reproduciendo pregunta...';
+  VoiceEngine.speak(qd.en, SIM.speed).then(()=>{
+    const st = document.getElementById('simStatus'); if(st) st.textContent='Toca el micrófono para responder';
+  });
+}
+function evaluateAnswer(transcript){
+  const qd = SIM.scenario.questions[SIM.step];
+  const sc = scoreTranscript(transcript, qd.keywords);
+  SIM.transcripts.push(transcript); SIM.scores.push(sc);
+  const fb = document.getElementById('simFeedback');
+  const good = sc >= 0.55;
+  fb.innerHTML = `<div class="card p-4 mt-2" style="background:${good?'var(--green-bg)':'var(--red-bg)'}">
+    <div class="font-bold text-sm mb-1" style="color:${good?'var(--green)':'var(--red)'}">${good?'✅ Buena respuesta':'✏️ Se puede mejorar'}</div>
+    ${SIM.mode==='guided' || !good ? `<p class="text-sm mb-1"><b>Respuesta más clara:</b> "${qd.tip}"</p><p class="text-xs opacity-60">Error común a evitar: ${qd.error}</p>`:''}
+  </div>`;
+  document.getElementById('simNext').style.display='inline-flex';
+}
+function bindSimAfterAnswer(){}
+
+/* ============================= RESULTADOS ============================= */
+function renderResults(){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  const {scenario, scores, transcripts} = SIM;
+  const durationMin = Math.max(1, Math.round((Date.now()-SIM.startedAt)/60000));
+  const overall = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length*100) : 0;
+  const metrics = {
+    'Comprensión auditiva': clampScore(overall/10 + rnd()),
+    'Pronunciación': clampScore(overall/10 + rnd()),
+    'Vocabulario': clampScore(overall/10 + rnd()),
+    'Gramática': clampScore(overall/10 + rnd()),
+    'Claridad': clampScore(overall/10 + rnd()),
+    'Fluidez': clampScore(overall/10 + rnd()),
+    'Seguridad al responder': clampScore(overall/10 + rnd()),
+    'Preparación para la situación': clampScore(overall/10),
+  };
+  const newWords = scenario.keyVocab.slice(0,5);
+  const weakIdx = scores.map((s,i)=>({s,i})).filter(o=>o.s<0.55).map(o=>o.i);
+  recordSession(scenario, metrics, durationMin, newWords);
+
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-6">
+        <div class="text-4xl mb-2">${overall>=70?'🎉':'💪'}</div>
+        <h2 class="display text-2xl font-semibold" style="color:var(--navy)">Resultados: ${scenario.title}</h2>
+        <p class="opacity-60 text-sm">Duración: ${durationMin} min · ${scenario.questions.length} preguntas respondidas</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 mb-6">
+        ${Object.entries(metrics).map(([k,v])=>`<div class="card p-4">
+          <div class="flex justify-between text-sm font-semibold mb-1"><span>${k}</span><span>${v}/10</span></div>
+          <div class="scorebar"><div style="width:${v*10}%"></div></div>
+        </div>`).join('')}
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mb-6">
+        <div class="card p-5">
+          <h4 class="font-bold mb-2" style="color:var(--green)">✅ Respuestas correctas</h4>
+          <ul class="text-sm space-y-1 opacity-80">${scores.map((s,i)=>s>=0.55?`<li>• ${scenario.questions[i].en}</li>`:'').join('') || '<li class="opacity-50">Sigue practicando para sumar aciertos.</li>'}</ul>
+        </div>
+        <div class="card p-5">
+          <h4 class="font-bold mb-2" style="color:var(--red)">✏️ Respuestas a mejorar</h4>
+          <ul class="text-sm space-y-1 opacity-80">${weakIdx.map(i=>`<li>• ${scenario.questions[i].en}<br><span class="opacity-50 text-xs">Sugerido: "${scenario.questions[i].tip}"</span></li>`).join('') || '<li class="opacity-50">¡No hubo respuestas débiles esta vez!</li>'}</ul>
+        </div>
+      </div>
+      <div class="card p-5 mb-6">
+        <h4 class="font-bold mb-2" style="color:var(--navy)">📚 Vocabulario nuevo de esta práctica</h4>
+        <div class="flex flex-wrap gap-2">${newWords.map(w=>`<span class="badge badge-navy">${w}</span>`).join('')}</div>
+      </div>
+      <div class="card p-5 mb-6" style="background:var(--mist)">
+        <h4 class="font-bold mb-1" style="color:var(--navy)">Recomendación para tu siguiente práctica</h4>
+        <p class="text-sm opacity-70">${overall>=70?`Buen trabajo. Prueba un escenario de mayor dificultad dentro de ${MODULES.find(m=>m.id===scenario.category).name}.`:`Repite este escenario en modo "Práctica guiada" para reforzar el vocabulario de ${MODULES.find(m=>m.id===scenario.category).name}.`}</p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <button class="btn btn-outline" data-nav="scenarios">Elegir otro escenario</button>
+        <button class="btn btn-primary" data-action="sim-retry">🔁 Repetir esta simulación</button>
+        <button class="btn btn-navy" data-nav="dashboard">Ir al dashboard</button>
+      </div>
+    </div>
+  `);
+}
+function clampScore(v){ return Math.max(1, Math.min(10, Math.round(v))); }
+function rnd(){ return (Math.random()*1.4-0.7); }
+
+/* ============================= HISTORIAL ============================= */
+function renderHistory(){
+  if(!requireAuth()) return;
+  renderTopNav('dashboard'); renderBottomNav('dashboard');
+  const s = STATE.progress.sessions;
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Progreso','Historial de sesiones')}
+    <div class="card p-5 mb-6">
+      <canvas id="historyChart" height="140"></canvas>
+    </div>
+    <div class="card divide-y" style="border-color:var(--line)">
+      ${s.length===0?`<p class="p-5 text-sm opacity-60">Sin sesiones registradas todavía.</p>`:
+      s.map(sess=>`<div class="p-4 flex items-center justify-between" style="border-color:var(--line)">
+        <div><div class="font-semibold text-sm">${sess.title}</div><div class="text-xs opacity-50">${new Date(sess.date).toLocaleString('es-MX')} · ${sess.durationMin} min</div></div>
+        <span class="badge badge-green">${avgScore(sess.scores)}%</span>
+      </div>`).join('')}
+    </div>
+    <button class="btn btn-outline btn-sm mt-6" data-action="clear-history">🗑️ Eliminar historial</button>
+  `);
+  drawProgressChart(s);
+  const c2 = document.getElementById('historyChart');
+  if(c2){ c2.id='progressChart'; drawProgressChart(s); }
+}
+
+/* ============================= DICCIONARIO ============================= */
+let dictQuery = ''; let dictCat = 'all';
+const DICT_CATS = [['all','Todos'],['dot','DOT'],['mecanica','Mecánica'],['dispatch','Dispatch'],['documentos','Documentos'],['terminales','Terminales'],['carga','Carga'],['basculas','Básculas'],['emergencias','Emergencias']];
+function renderDictionary(){
+  if(!requireAuth()) return;
+  renderTopNav('dictionary'); renderBottomNav('dictionary');
+  const allVocab = VOCAB.concat(STATE.settings.adminVocab||[]);
+  const filtered = allVocab.filter(v=>{
+    const matchesCat = dictCat==='all' || v.cat===dictCat;
+    const matchesQ = !dictQuery || (v.en+v.es).toLowerCase().includes(dictQuery.toLowerCase());
+    return matchesCat && matchesQ;
+  });
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Diccionario para camioneros','Vocabulario técnico con audio y ejemplos')}
+    <input class="input mb-4" placeholder="Buscar palabra o frase..." id="dictSearch" value="${dictQuery}">
+    <div class="flex flex-wrap gap-2 mb-6">
+      ${DICT_CATS.map(([id,label])=>`<button class="chip ${dictCat===id?'active':''}" data-action="dict-filter" data-val="${id}">${label}</button>`).join('')}
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      ${filtered.map((v,i)=>`<div class="card p-4">
+        <div class="flex justify-between items-start">
+          <h4 class="font-bold" style="color:var(--navy)">${v.en}</h4>
+          <button class="btn btn-ghost btn-sm" data-action="dict-listen" data-val="${encodeURIComponent(v.en)}">🔊</button>
+        </div>
+        <p class="text-sm font-semibold opacity-70">${v.es}</p>
+        <p class="text-xs opacity-50 mt-1">/${v.pron}/</p>
+        <p class="text-sm mt-2">${v.def}</p>
+        <p class="text-xs italic opacity-60 mt-2">"${v.ex}"</p>
+        <button class="btn btn-outline btn-sm w-full mt-3" data-action="dict-practice" data-val="${encodeURIComponent(v.en)}">🎙️ Practicar por voz</button>
+      </div>`).join('') || `<p class="opacity-60 text-sm">No se encontraron resultados.</p>`}
+    </div>
+    <div id="dictPracticeModal"></div>
+  `);
+}
+
+/* ============================= PLAN DE PRÁCTICA ============================= */
+function renderPlan(){
+  if(!requireAuth()) return;
+  renderTopNav('dashboard'); renderBottomNav('dashboard');
+  const plan = computeRecommendedPlan();
+  const week = [
+    ['Lunes','Inspección DOT de Nivel I','dot-1'],
+    ['Martes','Diccionario: categoría DOT','dict'],
+    ['Miércoles','Problema con los frenos','mech-1'],
+    ['Jueves','Comprensión auditiva','listening'],
+    ['Viernes','Llamada al dispatcher por retraso','dispatch-1'],
+    ['Sábado','Pronunciación de vocabulario clave','pronunciation'],
+    ['Domingo','Descanso o repaso libre','scenarios'],
+  ];
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Tu plan de práctica','Basado en tu diagnóstico inicial')}
+    <div class="card p-5 mb-6">
+      <div class="flex flex-wrap gap-3">
+        <span class="badge badge-navy">Nivel ${plan.lvl}</span>
+        <span class="badge badge-orange">${plan.mins} al día</span>
+        <span class="badge badge-green">Enfoque: ${plan.focus}</span>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      ${week.map(([day,title,target])=>`<div class="card p-4">
+        <div class="text-xs font-bold opacity-50">${day}</div>
+        <div class="font-semibold text-sm mt-1">${title}</div>
+        <button class="btn btn-navy btn-sm w-full mt-3" data-nav="${target==='dict'?'dictionary':(['listening','pronunciation'].includes(target)?target:'simulate/'+target)}">Practicar</button>
+      </div>`).join('')}
+    </div>
+  `);
+}
+
+/* ============================= PERFIL Y CONFIGURACIÓN ============================= */
+function renderProfile(){
+  if(!requireAuth()) return;
+  renderTopNav('profile'); renderBottomNav('profile');
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Perfil','Tu información y preferencias')}
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Datos del conductor</h3>
+        <div class="space-y-3">
+          <div><label class="text-xs font-semibold opacity-60">Nombre</label><input class="input" id="pfName" value="${STATE.user.name||''}"></div>
+          <div><label class="text-xs font-semibold opacity-60">País de origen</label><input class="input" id="pfCountry" value="${STATE.user.country||''}"></div>
+          <div><label class="text-xs font-semibold opacity-60">Minutos diarios de práctica</label>
+            <select class="input" id="pfMinutes">
+              ${['10 minutos','15 minutos','30 minutos','45+ minutos'].map(m=>`<option ${STATE.user.dailyMinutes===m?'selected':''}>${m}</option>`).join('')}
+            </select>
+          </div>
+          <div><label class="text-xs font-semibold opacity-60">Velocidad de voz preferida</label>
+            <select class="input" id="pfSpeed">
+              ${['Lenta','Normal','Progresiva'].map(m=>`<option ${STATE.user.speed===m?'selected':''}>${m}</option>`).join('')}
+            </select>
+          </div>
+          <button class="btn btn-primary w-full" data-action="save-profile">Guardar cambios</button>
+        </div>
+      </div>
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Preferencias</h3>
+        <div class="flex items-center justify-between py-2">
+          <span class="text-sm font-medium">Modo oscuro</span>
+          <button class="chip ${STATE.settings.darkMode?'active':''}" data-action="toggle-dark">${STATE.settings.darkMode?'Activado':'Desactivado'}</button>
+        </div>
+        <hr class="my-3" style="border-color:var(--line)">
+        <h4 class="font-bold text-sm mb-2" style="color:var(--navy)">Privacidad y datos</h4>
+        <p class="text-xs opacity-60 mb-3">No se graba ni almacena audio sin tu consentimiento. Tu progreso se guarda únicamente en este dispositivo.</p>
+        <button class="btn btn-outline btn-sm w-full mb-2" data-action="clear-history">Eliminar mi historial</button>
+        <button class="btn btn-outline btn-sm w-full" data-nav="admin">Panel de administrador (demo)</button>
+        <p class="text-[11px] opacity-50 mt-4">Esta plataforma es una herramienta educativa y no constituye asesoría legal ni certificación oficial del Departamento de Transporte (DOT).</p>
+      </div>
+    </div>
+  `);
+}
+
+/* ============================= SUSCRIPCIÓN ============================= */
+function renderSubscription(){
+  if(!requireAuth()) return;
+  renderTopNav('profile'); renderBottomNav('profile');
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Suscripción','Elige el plan adecuado para ti')}
+    <div class="grid md:grid-cols-3 gap-5">
+      ${PLANS.map(p=>`<div class="card p-6 flex flex-col">
+        <span class="badge badge-navy w-fit mb-3">${p.tag}</span>
+        <h3 class="font-bold text-lg" style="color:var(--navy)">${p.name}</h3>
+        <div class="text-2xl font-bold my-2">${p.price}</div>
+        <ul class="text-sm opacity-80 space-y-2 mb-5 flex-1">${p.features.map(f=>`<li>✓ ${f}</li>`).join('')}</ul>
+        <button class="btn ${p.id==='free'?'btn-primary':'btn-outline'} w-full" data-action="subscribe" data-val="${p.id}">${p.cta}</button>
+      </div>`).join('')}
+    </div>
+    <p class="text-xs opacity-50 mt-6">Los precios se mostrarán próximamente. La integración de pagos (Stripe u otro proveedor) se conectará en la versión de producción.</p>
+  `);
+}
+
+/* ============================= LOGIN ============================= */
+function renderLogin(){
+  renderTopNav(null); renderBottomNav(null);
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-sm mx-auto card p-6">
+      <h2 class="font-bold text-xl mb-1" style="color:var(--navy)">Iniciar sesión</h2>
+      <p class="text-xs opacity-60 mb-4">Modo de demostración: se usará el perfil guardado en este dispositivo.</p>
+      <input class="input mb-3" placeholder="Correo electrónico">
+      <input class="input mb-4" placeholder="Contraseña" type="password">
+      <button class="btn btn-primary w-full" data-action="demo-login">Entrar</button>
+      <p class="text-xs opacity-50 mt-4">Autenticación real (correo, SMS o Google) se conectará en producción.</p>
+    </div>
+  `);
+}
+
+/* ============================= ADMIN ============================= */
+function renderAdmin(){
+  if(!requireAuth()) return;
+  renderTopNav(null); renderBottomNav('profile');
+  const activeCount = SCENARIOS.length - Object.values(STATE.settings.adminScenarioStatus||{}).filter(v=>v===false).length;
+  document.getElementById('app').innerHTML = wrap(`
+    ${sectionTitle('Panel de administrador','Vista demostrativa — Plan Fleet')}
+    <div class="grid sm:grid-cols-4 gap-4 mb-6">
+      ${[['👥','1 (demo)','Usuarios activos'],['🎬',activeCount,'Escenarios activos'],['📚',VOCAB.length+(STATE.settings.adminVocab||[]).length,'Palabras en diccionario'],['📈',STATE.progress.sessions.length,'Sesiones registradas']]
+        .map(([i,n,l])=>`<div class="card p-4"><div class="text-xl">${i}</div><div class="text-xl font-bold" style="color:var(--navy)">${n}</div><div class="text-xs opacity-60">${l}</div></div>`).join('')}
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Escenarios</h3>
+        <div class="max-h-80 overflow-y-auto space-y-2 pr-1">
+        ${SCENARIOS.map(s=>{
+          const active = STATE.settings.adminScenarioStatus[s.id] !== false;
+          return `<div class="flex items-center justify-between text-sm border-b py-2" style="border-color:var(--line)">
+            <span>${s.title}</span>
+            <button class="chip ${active?'active':''}" data-action="admin-toggle-scenario" data-val="${s.id}">${active?'Activo':'Inactivo'}</button>
+          </div>`;
+        }).join('')}
+        </div>
+      </div>
+      <div class="card p-5">
+        <h3 class="font-bold mb-3" style="color:var(--navy)">Agregar palabra al diccionario</h3>
+        <input class="input mb-2" id="admWordEn" placeholder="Palabra en inglés">
+        <input class="input mb-2" id="admWordEs" placeholder="Traducción al español">
+        <input class="input mb-2" id="admWordDef" placeholder="Definición sencilla">
+        <select class="input mb-3" id="admWordCat">${DICT_CATS.filter(c=>c[0]!=='all').map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}</select>
+        <button class="btn btn-primary w-full" data-action="admin-add-word">Agregar al diccionario</button>
+      </div>
+    </div>
+    <div class="card p-5 mt-6">
+      <h3 class="font-bold mb-2" style="color:var(--navy)">Configuración de planes</h3>
+      <p class="text-xs opacity-60">Los precios están configurados como "Próximamente". Conéctalos a tu procesador de pagos en producción.</p>
+    </div>
+  `);
+}
+
+/* ============================= MODOS INDEPENDIENTES ============================= */
+function renderQuick(){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  const bank = SCENARIOS.filter(s=>s.category==='dot').flatMap(s=>s.questions).slice(0,10);
+  if(!window._quickIdx) window._quickIdx = 0;
+  const item = bank[window._quickIdx % bank.length];
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-lg mx-auto text-center">
+      <div class="badge badge-orange mb-3">⚡ Respuesta rápida</div>
+      <div class="card p-6">
+        <p class="text-lg font-semibold mb-4">${item.en}</p>
+        <div id="quickTimer" class="text-3xl font-bold mb-4" style="color:var(--orange)">5</div>
+        <button class="mic-btn" data-action="quick-mic">🎤</button>
+        <div id="quickStatus" class="text-sm opacity-60 mt-3">Prepárate... responde apenas puedas</div>
+        <div id="quickResult" class="mt-3"></div>
+      </div>
+      <button class="btn btn-outline mt-5" data-action="quick-next">Siguiente pregunta →</button>
+    </div>
+  `);
+  let t = 5; const timerEl = document.getElementById('quickTimer');
+  clearInterval(window._quickInterval);
+  window._quickInterval = setInterval(()=>{ t--; if(timerEl) timerEl.textContent=t; if(t<=0){ clearInterval(window._quickInterval); const st=document.getElementById('quickStatus'); if(st) st.textContent='¡Tiempo! Intenta responder más rápido la próxima vez.'; } },1000);
+}
+function renderListening(){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  const bank = SCENARIOS.flatMap(s=>s.questions);
+  if(window._listenIdx===undefined) window._listenIdx = 0;
+  const item = bank[window._listenIdx % bank.length];
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-lg mx-auto text-center">
+      <div class="badge badge-navy mb-3">👂 Comprensión auditiva</div>
+      <div class="card p-6">
+        <p class="text-sm opacity-60 mb-4">Escucha la frase. Puedes pedir que se repita una vez antes de ver el texto.</p>
+        <div class="flex justify-center gap-2 mb-4">
+          <button class="chip" data-action="listen-speed" data-val="0.7">Lenta</button>
+          <button class="chip active" data-action="listen-speed" data-val="1">Normal</button>
+          <button class="chip" data-action="listen-speed" data-val="1.15">Realista</button>
+        </div>
+        <button class="btn btn-primary" data-action="listen-play">🔊 Reproducir</button>
+        <p id="listenText" class="text-lg font-semibold mt-5" style="display:none">${item.en}</p>
+        <button class="btn btn-outline btn-sm mt-4" data-action="listen-reveal">Ver transcripción</button>
+      </div>
+      <button class="btn btn-outline mt-5" data-action="listen-next">Siguiente →</button>
+    </div>
+  `);
+}
+function renderPronunciation(){
+  if(!requireAuth()) return;
+  renderTopNav('scenarios'); renderBottomNav('scenarios');
+  const bank = VOCAB;
+  if(window._pronIdx===undefined) window._pronIdx = 0;
+  const item = bank[window._pronIdx % bank.length];
+  document.getElementById('app').innerHTML = wrap(`
+    <div class="max-w-lg mx-auto text-center">
+      <div class="badge badge-green mb-3">🗣️ Práctica de pronunciación</div>
+      <div class="card p-6">
+        <p class="text-sm opacity-60 mb-2">Repite la siguiente frase en voz alta:</p>
+        <p class="text-xl font-bold mb-1" style="color:var(--navy)">${item.en}</p>
+        <p class="text-xs opacity-50 mb-4">/${item.pron}/</p>
+        <button class="btn btn-ghost btn-sm mb-4" data-action="pron-listen">🔊 Escuchar modelo</button>
+        <button class="mic-btn" data-action="pron-mic">🎤</button>
+        <div id="pronStatus" class="text-sm opacity-60 mt-3">Toca el micrófono y repite la frase</div>
+        <div id="pronResult" class="mt-3"></div>
+      </div>
+      <button class="btn btn-outline mt-5" data-action="pron-next">Siguiente palabra →</button>
+    </div>
+  `);
+}
+function levenshtein(a,b){
+  a=a.toLowerCase().trim(); b=b.toLowerCase().trim();
+  const m=[]; for(let i=0;i<=b.length;i++)m[i]=[i];
+  for(let j=0;j<=a.length;j++)m[0][j]=j;
+  for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)
+    m[i][j]=b.charAt(i-1)==a.charAt(j-1)?m[i-1][j-1]:Math.min(m[i-1][j-1]+1,m[i][j-1]+1,m[i-1][j]+1);
+  return m[b.length][a.length];
+}
+
+/* ============================= EVENTOS ============================= */
+document.addEventListener('click', function(e){
+  const navEl = e.target.closest('[data-nav]');
+  const anchorEl = e.target.closest('[data-anchor]');
+  const actionEl = e.target.closest('[data-action]');
+  if(navEl){ go('#/'+navEl.dataset.nav); return; }
+  if(anchorEl){ const t=document.getElementById(anchorEl.dataset.anchor); if(t) t.scrollIntoView({behavior:'smooth'}); return; }
+  if(!actionEl) return;
+  const action = actionEl.dataset.action; const val = actionEl.dataset.val;
+
+  if(action==='play-demo'){
+    const lines = JSON.parse(document.getElementById('demoConvo').dataset.lines);
+    (async()=>{ for(const l of lines){ if(l.who!=='AI Instructor') await VoiceEngine.speak(l.text,1); } })();
+  }
+  else if(action==='ob-back'){ onboardStep=Math.max(0,onboardStep-1); renderOnboarding(); }
+  else if(action==='ob-next'){
+    const qd = ONBOARD_QUESTIONS[onboardStep];
+    if(qd.type==='text'){ STATE.user[qd.key] = document.getElementById('obInput').value.trim(); }
+    if(qd.type==='choice' && !STATE.user['_'+qd.key+'set']){ /* keep as chosen already */ }
+    saveState(); onboardStep++; renderOnboarding();
+  }
+  else if(action==='ob-choice'){
+    const qd = ONBOARD_QUESTIONS[onboardStep];
+    STATE.user[qd.key] = qd.key==='level'?val.split(' - ')[0]:val;
+    saveState(); renderOnboarding();
+  }
+  else if(action==='ob-multi'){
+    const qd = ONBOARD_QUESTIONS[onboardStep];
+    const arr = Array.isArray(STATE.user[qd.key])?STATE.user[qd.key].slice():[];
+    const idx = arr.indexOf(val);
+    if(idx>-1) arr.splice(idx,1); else arr.push(val);
+    STATE.user[qd.key]=arr; saveState(); renderOnboarding();
+  }
+  else if(action==='ob-diag-mic'){
+    const btn = document.getElementById('diagMic'); const status = document.getElementById('diagStatus');
+    if(!VoiceEngine.supported){ status.textContent='Micrófono no disponible en este navegador — puedes continuar de todas formas.'; return; }
+    btn.classList.add('listening'); status.textContent='Escuchando...';
+    VoiceEngine.listen((finalT,interim)=>{ document.getElementById('diagTranscript').textContent = finalT||interim; },
+      ()=>{ btn.classList.remove('listening'); status.textContent='Gracias, respuesta registrada.'; });
+  }
+  else if(action==='ob-finish'){ STATE.onboarded=true; saveState(); go('#/dashboard'); }
+  else if(action==='demo-login'){ if(!STATE.user.name) STATE.user.name='Conductor'; STATE.onboarded=true; saveState(); go('#/dashboard'); toast('Sesión iniciada (modo demostración)'); }
+  else if(action==='save-profile'){
+    STATE.user.name=document.getElementById('pfName').value.trim();
+    STATE.user.country=document.getElementById('pfCountry').value.trim();
+    STATE.user.dailyMinutes=document.getElementById('pfMinutes').value;
+    STATE.user.speed=document.getElementById('pfSpeed').value;
+    saveState(); toast('Perfil actualizado'); renderProfile();
+  }
+  else if(action==='toggle-dark'){ STATE.settings.darkMode=!STATE.settings.darkMode; saveState(); applyDarkMode(); renderProfile(); }
+  else if(action==='clear-history'){ if(confirm('¿Eliminar todo tu historial de práctica? Esta acción no se puede deshacer.')){ STATE.progress = defaultState().progress; saveState(); toast('Historial eliminado'); render(); } }
+  else if(action==='subscribe'){ toast(val==='free'?'Plan gratuito activado':'La integración de pagos estará disponible próximamente.'); }
+  else if(action==='filter-scenario'){ scenarioFilter=val; renderScenarios(); }
+  else if(action==='dict-filter'){ dictCat=val; renderDictionary(); }
+  else if(action==='dict-listen'){ VoiceEngine.speak(decodeURIComponent(val),0.95); }
+  else if(action==='dict-practice'){
+    const term = decodeURIComponent(val);
+    document.getElementById('dictPracticeModal').innerHTML = `
+    <div class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4" data-action="dict-close">
+      <div class="card p-6 max-w-sm w-full text-center" onclick="event.stopPropagation()">
+        <h3 class="font-bold mb-2" style="color:var(--navy)">Practica: ${term}</h3>
+        <button class="btn btn-ghost btn-sm mb-4" data-action="dict-listen" data-val="${val}">🔊 Escuchar</button><br>
+        <button class="mic-btn" data-action="dict-mic" data-val="${val}">🎤</button>
+        <div id="dictPronStatus" class="text-sm opacity-60 mt-3">Toca el micrófono y repite la palabra</div>
+        <div id="dictPronResult" class="mt-2"></div>
+        <button class="btn btn-outline btn-sm mt-4" data-action="dict-close">Cerrar</button>
+      </div>
+    </div>`;
+  }
+  else if(action==='dict-close'){ document.getElementById('dictPracticeModal').innerHTML=''; }
+  else if(action==='dict-mic'){
+    const term = decodeURIComponent(val);
+    if(!VoiceEngine.supported){ document.getElementById('dictPronStatus').textContent='Micrófono no disponible en este navegador.'; return; }
+    document.getElementById('dictPronStatus').textContent='Escuchando...';
+    VoiceEngine.listen((f,i)=>{}, (status,finalT)=>{
+      const dist = levenshtein(finalT||'', term);
+      const ok = dist <= Math.max(2, Math.round(term.length*0.35));
+      document.getElementById('dictPronStatus').textContent = 'Dijiste: "'+(finalT||'—')+'"';
+      document.getElementById('dictPronResult').innerHTML = `<span class="badge ${ok?'badge-green':'badge-red'}">${ok?'Pronunciación clara':'Sigue practicando'}</span>`;
+    });
+  }
+  else if(action==='admin-toggle-scenario'){
+    const cur = STATE.settings.adminScenarioStatus[val] !== false;
+    STATE.settings.adminScenarioStatus[val] = !cur; saveState(); renderAdmin();
+  }
+  else if(action==='admin-add-word'){
+    const en=document.getElementById('admWordEn').value.trim();
+    const es=document.getElementById('admWordEs').value.trim();
+    const def=document.getElementById('admWordDef').value.trim();
+    const cat=document.getElementById('admWordCat').value;
+    if(!en||!es){ toast('Escribe al menos la palabra en inglés y su traducción'); return; }
+    STATE.settings.adminVocab.push({en,es,def:def||'—',cat,pron:en.toLowerCase(),ex:en});
+    saveState(); toast('Palabra agregada al diccionario'); renderAdmin();
+  }
+  /* ---- simulación ---- */
+  else if(action==='sim-mic'){
+    if(!SIM) return;
+    if(!VoiceEngine.supported){ toast('Usa "Escribir respuesta" en este navegador.'); return; }
+    const btn = document.getElementById('simMic'); btn.classList.add('listening');
+    document.getElementById('simStatus').textContent='Escuchando...';
+    VoiceEngine.listen((f,i)=>{ document.getElementById('simTranscript').textContent = f||i; },
+      (status,finalT)=>{ btn.classList.remove('listening'); document.getElementById('simStatus').textContent='Procesando...';
+        setTimeout(()=>{ document.getElementById('simStatus').textContent='Respuesta registrada'; evaluateAnswer(finalT||''); },400); });
+  }
+  else if(action==='sim-type'){
+    const txt = prompt('Escribe tu respuesta en inglés:'); if(txt===null) return;
+    document.getElementById('simTranscript').textContent = txt;
+    evaluateAnswer(txt);
+  }
+  else if(action==='sim-repeat'){ simSpeakQuestion(); }
+  else if(action==='sim-slow'){ SIM.speed = 0.6; simSpeakQuestion(); }
+  else if(action==='sim-help'){
+    const phrase = HONEST_PHRASES[Math.floor(Math.random()*HONEST_PHRASES.length)];
+    toast('Frase útil: "'+phrase.en+'" ('+phrase.es+')');
+  }
+  else if(action==='sim-es'){ const es=document.getElementById('questionEs'); es.style.display = es.style.display==='none'?'block':'none'; }
+  else if(action==='sim-next'){ SIM.step++; renderSimulate(SIM.scenario.id, SIM.mode); }
+  else if(action==='sim-end'){ if(confirm('¿Terminar esta simulación y ver tus resultados?')) renderResults(); }
+  else if(action==='sim-retry'){ startSimulation(SIM.scenario.id, SIM.mode); renderSimulate(SIM.scenario.id, SIM.mode); }
+  /* ---- quick / listening / pronunciation ---- */
+  else if(action==='quick-mic'){
+    clearInterval(window._quickInterval);
+    if(!VoiceEngine.supported){ document.getElementById('quickStatus').textContent='Micrófono no disponible.'; return; }
+    document.getElementById('quickStatus').textContent='Escuchando...';
+    VoiceEngine.listen((f,i)=>{}, (s,finalT)=>{
+      document.getElementById('quickResult').innerHTML = `<p class="text-sm">Dijiste: "${finalT||'—'}"</p>`;
+      document.getElementById('quickStatus').textContent='¡Buen intento!';
+    });
+  }
+  else if(action==='quick-next'){ window._quickIdx=(window._quickIdx||0)+1; renderQuick(); }
+  else if(action==='listen-speed'){ window._listenSpeed = parseFloat(val); }
+  else if(action==='listen-play'){ const bank=SCENARIOS.flatMap(s=>s.questions); const item=bank[window._listenIdx%bank.length]; VoiceEngine.speak(item.en, window._listenSpeed||1); }
+  else if(action==='listen-reveal'){ document.getElementById('listenText').style.display='block'; }
+  else if(action==='listen-next'){ window._listenIdx=(window._listenIdx||0)+1; renderListening(); }
+  else if(action==='pron-listen'){ const item=VOCAB[window._pronIdx%VOCAB.length]; VoiceEngine.speak(item.en, 0.85); }
+  else if(action==='pron-mic'){
+    const item=VOCAB[window._pronIdx%VOCAB.length];
+    if(!VoiceEngine.supported){ document.getElementById('pronStatus').textContent='Micrófono no disponible.'; return; }
+    document.getElementById('pronStatus').textContent='Escuchando...';
+    VoiceEngine.listen((f,i)=>{}, (s,finalT)=>{
+      const dist = levenshtein(finalT||'', item.en);
+      const ok = dist <= Math.max(2, Math.round(item.en.length*0.35));
+      document.getElementById('pronStatus').textContent = 'Dijiste: "'+(finalT||'—')+'"';
+      document.getElementById('pronResult').innerHTML = `<span class="badge ${ok?'badge-green':'badge-red'}">${ok?'Muy clara':'Sigue practicando esta palabra'}</span>`;
+    });
+  }
+  else if(action==='pron-next'){ window._pronIdx=(window._pronIdx||0)+1; renderPronunciation(); }
+});
+document.addEventListener('input', function(e){
+  if(e.target.id==='dictSearch'){ dictQuery = e.target.value; renderDictionary(); }
+});
+
+/* ============================= RENDER PRINCIPAL ============================= */
+function render(){
+  const parts = currentRoute();
+  const [page, a, b] = parts;
+  window.scrollTo(0,0);
+  if(page==='landing') return renderLanding();
+  if(page==='login') return renderLogin();
+  if(page==='onboarding') return renderOnboarding();
+  if(page==='dashboard') return renderDashboard();
+  if(page==='modules') return renderModules(a);
+  if(page==='scenarios') return renderScenarios();
+  if(page==='simulate') return renderSimulate(a);
+  if(page==='history') return renderHistory();
+  if(page==='dictionary') return renderDictionary();
+  if(page==='plan') return renderPlan();
+  if(page==='profile') return renderProfile();
+  if(page==='subscription') return renderSubscription();
+  if(page==='admin') return renderAdmin();
+  if(page==='quick') return renderQuick();
+  if(page==='listening') return renderListening();
+  if(page==='pronunciation') return renderPronunciation();
+  return renderLanding();
+}
+if(!window.location.hash) window.location.hash = STATE.onboarded ? '#/dashboard' : '#/landing';
+render();
+</script>
+</body>
+</html>
